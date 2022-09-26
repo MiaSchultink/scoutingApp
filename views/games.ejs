@@ -12,6 +12,7 @@
             <button class="general-btn" onclick="location.assign('/game/new')">Add Game</button>
             <div class="game-container">
                 <% for(let i=0; i<games.length; i++) {%>
+                    
                     <div class="game-title"><%=games[i].name%></div>
                     <div class="game-category">Time: <%=games[i].time%></div>
                     <div class="game-category">Type: <%=games[i].type%></div>

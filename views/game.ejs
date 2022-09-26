@@ -1,0 +1,50 @@
+<%- include('includes/top.ejs') %> 
+<body>
+    <div class="top">
+    <%- include('includes/nav.ejs') %> 
+    <div class="main">
+
+<div class="game-container">
+    <div class="game-title"><%=game.name%></div>
+    <div class="game-category">Time: <%=game.time%></div>
+    <div class="game-category">Type: <%=game.type%></div>
+
+    <div class="aliance-heading">Our Aliance</div>
+    <div class="game-team">
+        <div class="team-info-container">
+        <%-include('includes/team-info.ejs',{team: game.ourAliance[0]})%>
+        </div>
+    </div>
+    <div class="game-team">
+        <div class="team-info-container">
+        <%-include('includes/team-info.ejs',{team: game.ourAliance[1]})%>
+        </div>
+    </div>
+    <div class="game-team">
+        <div class="team-info-container">
+        <%-include('includes/team-info.ejs',{team: game.ourAliance[2]})%>
+        </div>
+    </div>
+
+    <div class="aliance-heading">Opposing Aliance</div>
+    <div class="game-team">
+        <div class="team-info-container">
+        <%-include('includes/team-info.ejs',{team: game.opposingAliance[0]})%>
+        </div>
+    </div>
+    <div class="game-team">
+        <div class="team-info-container">
+        <%-include('includes/team-info.ejs',{team: game.opposingAliance[1]})%>
+        </div>
+    </div>
+    <div class="game-team">
+        <div class="team-info-container">
+        <%-include('includes/team-info.ejs',{team: game.opposingAliance[2]})%>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</body>

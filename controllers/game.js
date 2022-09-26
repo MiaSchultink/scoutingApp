@@ -16,6 +16,22 @@ exports.getAllGames = async(req, res, next) =>{
         res.render('error')
     }
 }
+
+exports.getGame = async(req, res, next) =>{
+    try{
+        const gameId = req.body.gameId
+        const game = await Game.findOne({_id: gameId}).exec()
+
+        res.render('game',{
+            game:game
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
 exports.getAddGame = async(req, res, next) =>{
     try{
         const teams = await Team.find().exec();
