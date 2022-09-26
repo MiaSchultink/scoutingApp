@@ -1,0 +1,79 @@
+<%- include('includes/top.ejs') %> 
+<body>
+<div class="top">
+        <%- include('includes/nav.ejs') %> 
+    <div class="main">
+    <div class="form-container">
+      <form action = "/team/update" method="post">
+    <div class="form-section">
+        <label for="teamName">Name</label>
+        <input class="input-txt" name = "teamName" required>
+    </div>
+    <div class="form-section">
+        <label for="teamNumber">Number</label>
+        <input class="num-input" name ="teamNumber" required><br>
+    </div>
+    <div class="form-section">
+        <label for="robotType">Robot Type</label>
+        <select class="select" name="robotType" id="robotType">
+            <option value="TANK">TANK</option>
+            <option value="SWERVE">SWERVE</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <label for="barReached">Bar Reached</label>
+        <select class='select' name="barReached" id="barReached">
+            <option value="LOw">LOW</option>
+            <option value="MID">MID</option>
+            <option value="HIGH">HIGH</option>
+            <option value="TRAVERSAL">TRAVERSAL</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <label for="shooterType">Shooter Type</label>
+        <select calss="select" name="shooterType" id="shooterType">
+            <option value="LOw">LOW</option>
+            <option value="HIGH">HIGH</option>
+        </select><br>
+        </div>
+    <div class="form-section">
+        <label for="climbingConsistency">Climb Consistency</label>
+        <select class="select" name="climbingConsistency" id="climbingConsistency">
+            <option value="BAD">BAD</option>
+            <option value="OK">MID</option>
+            <option value="GOOD">GOOD</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <label for="shootingConsistency">Shooter Consistency</label>
+        <select class="select" name="shootingConsistency" id="shootingConsistency">
+            <option value="BAD">BAD</option>
+            <option value="OK">MID</option>
+            <option value="GOOD">GOOD</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <label for="defenseBot">Defense Bot</label>
+        <select class="select" name="defenseBot" id="defenseBot">
+            <option value="NOT">NOT</option>
+            <option value="BAD">BAD</option>
+            <option value="OK">MID</option>
+            <option value="GOOD">GOOD</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <label for="numBallAuto">Balls in Auto</label>
+        <input class="num-input" type="number" name="numBallAuto"><br>
+    </div>
+    <div class="form-section">
+        <label for="otherComments">Other Comments</label><br>
+        <input class="big-input" type="text" name="otherComments"><br>
+    </div>
+        <button class="general-btn" type="submit">Update Team</button>
+        <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+</body>

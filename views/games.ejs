@@ -1,0 +1,58 @@
+<%- include('includes/top.ejs') %> 
+<body>
+    <div class="top">
+    <script>
+        function decideTeamBackgroud(alianceColor, containerId){
+        
+        }
+    </script>
+    <%- include('includes/nav.ejs') %> 
+    <div class="main">
+        <div class="page-container">
+            <button class="general-btn" onclick="location.assign('/game/new')">Add Game</button>
+            <div class="game-container">
+                <% for(let i=0; i<games.length; i++) {%>
+                    <div class="game-title"><%=games[i].name%></div>
+                    <div class="game-category">Time: <%=games[i].time%></div>
+                    <div class="game-category">Type: <%=games[i].type%></div>
+
+                    <div class="aliance-heading">Our Aliance</div>
+                    <div class="game-team">
+                        <div class="team-info-container">
+                        <%-include('includes/team-info.ejs',{team: games[i].ourAliance[0]})%>
+                        </div>
+                    </div>
+                    <div class="game-team">
+                        <div class="team-info-container">
+                        <%-include('includes/team-info.ejs',{team: games[i].ourAliance[1]})%>
+                        </div>
+                    </div>
+                    <div class="game-team">
+                        <div class="team-info-container">
+                        <%-include('includes/team-info.ejs',{team: games[i].ourAliance[2]})%>
+                        </div>
+                    </div>
+
+                    <div class="aliance-heading">Opposing Aliance</div>
+                    <div class="game-team">
+                        <div class="team-info-container">
+                        <%-include('includes/team-info.ejs',{team: games[i].opposingAliance[0]})%>
+                        </div>
+                    </div>
+                    <div class="game-team">
+                        <div class="team-info-container">
+                        <%-include('includes/team-info.ejs',{team: games[i].opposingAliance[1]})%>
+                        </div>
+                    </div>
+                    <div class="game-team">
+                        <div class="team-info-container">
+                        <%-include('includes/team-info.ejs',{team: games[i].opposingAliance[2]})%>
+                        </div>
+                    </div>
+
+                <% } %> 
+            
+        </div>
+      </div>
+      </div>
+</body>

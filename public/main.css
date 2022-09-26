@@ -1,0 +1,243 @@
+:root {
+    --background: #000000;
+    --secondary-background: #3D0000;
+    --nav-width: 200px;
+    --search-height: 40px;
+    --dark-primary: #950101;
+    --primary: #FF0000;
+    --dark-grey: #1F1F1F
+}
+
+
+body {
+    background-color: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        background-color: var(--background);
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main {
+        display: flex;
+        justify-content: center;
+    }
+
+    .top {
+        padding: 20px;
+    }
+
+    .auth-form-container {
+        width: 90%;
+        display: block;
+    }
+
+    .form-section {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .input-txt {
+        padding: 5px;
+        width: 100%;
+        border-radius: 12px;
+        background-color: var(--secondary-background);
+        color: white;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        height: 30px;
+    }
+
+    .num-input{
+        padding: 5px;
+        width: 25%;
+        border-radius: 12px;
+        background-color: var(--secondary-background);
+        color: white;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        height: 30px;
+    }
+    .big-input{
+        padding: 5px;
+        width: 100%;
+        border-radius: 12px;
+        background-color: var(--secondary-background);
+        color: white;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        height: 100px;
+    }
+    .form-btn {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+        font-size: 15px;
+        height: 30px;
+        width: 100px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+    }
+    
+    .nav-btn{
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        font-size: 15px;
+        color: white;
+        width: 100%;
+        height: 100%;
+    }
+    .nav-mini-sec{
+        border-bottom:1px solid white;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .link-btn {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+
+
+        font-size: 15px;
+    }
+
+    .nav-container {
+        display: none;
+        height: auto;
+        width: 100px;
+        background-color: var(--secondary-background);
+        border-radius: 10px;
+    }
+
+    .menu-btn {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+
+        color: white;
+        border: 1px solid white;
+        font-size: 40px;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+    }
+
+    .general-btn{
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    
+        color: white;
+        background-color: var(--primary);
+        height: 40px;
+        border-radius: 10px;
+        font-size: 15px;
+        width: 100px;
+    }
+
+    .form-section{
+        margin-top:10px;
+    }
+    .form-container{
+        width: 90vw;
+    }
+
+    .page-container{
+        width: 90vw;
+        padding: 20px;
+    }
+    .team-container{
+        margin-top: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: var(--dark-grey);
+    }
+    .team-title{
+        font-size: 20px;
+        font-weight: bold;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btns-section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:10px;
+    }
+    .small-btn{
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    
+        color: white;
+        background-color: var(--secondary-background);
+        height: 30px;
+        margin:5px;
+        border-radius: 10px;
+        font-size: 13;
+        width: 70px;
+    }
+
+    .game-title{
+        font-size: 25px;
+        font-weight: bold;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .game-container{
+        padding: 20px;
+        background-color: var(--dark-grey);
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+    .team-info-container{
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .aliance-heading{
+        font-size: 17px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

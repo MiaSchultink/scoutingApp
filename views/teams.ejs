@@ -1,0 +1,37 @@
+<%- include('includes/top.ejs') %> 
+<body>
+    <div class="top">
+    <%- include('includes/nav.ejs') %> 
+    <div class="main">
+        <div class="page-container">
+        <button class="general-btn" onclick="location.assign('/team/new')">Add Team</button>
+        <div class="team-container">
+            <% for(let i=0; i<teams.length; i++){%>
+                <div class="team-title"><%=teams[i].name%> <%=teams[i].number%></div>
+                <div class="team-category">Robot Type: <%=teams[i].robotType%></div>
+                <div class="team-category">Shoot: <%=teams[i].shooterType%></div>
+                <div class="team-category">Bar: <%=teams[i].barReached%></div>
+                <div class="team-category">Climbing: <%=teams[i].climbingConsistency%></div>
+                <div class="team-category">Shooting: <%=teams[i].shootingConsistency%></div>
+                <div class="team-category">Defense: <%=teams[i].defenseBot%></div>
+                <div class="team-category">Auto: <%=teams[i].numBallAuto%></div>
+                <div class="team-category">Comments: <%=teams[i].otherComments%></div>
+                <div class="btns-section">
+                <form action="/team/delete">
+                    <button class="small-btn" type="submit">Delete</button>
+                    <input type="hidden" name="teamId" value = '<%=teams[i]._id%>'>
+                    <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+                </form>
+                <form action="/team/update">
+                    <button class="small-btn" type="submit">Update</button>
+                    <input type="hidden" name="teamID" value = '<%=teams[i]._id%>'>
+                    <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+                </form>
+                </div>
+             <% } %> 
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+</body>

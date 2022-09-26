@@ -1,0 +1,46 @@
+
+ <button class="menu-btn" onclick="showNav()"><i class="far fa-ellipsis-h"></i></button>
+
+ <script>
+    function showNav(){
+        const navBar = document.getElementById('nav-bar');
+        navBar.style.display = 'block'
+    }
+
+    function hideNav(){
+        const navBar = document.getElementById('nav-bar');
+        if(navBar.style.display=='block'){
+            navBar.style.display = 'none'
+            navBar.onclick = showNav()
+        }
+    }
+ </script>
+
+ <div id='nav-bar' class="nav-container">
+    <div class="nav-section">
+        <% if(!locals.isLoggedIn){%>
+        <div class="nav-mini-sec">
+        <button class="nav-btn" onclick="location.assign('/user/login')">Login</button>
+        </div>
+        <%}%>
+       <% if(locals.isLoggedIn){%>
+        <div class="nav-mini-sec">
+            <button class="nav-btn" onclick="location.assign('/team/all')">Teams</button>
+        </div>
+        <div class="nav-section">
+            <div class="nav-mini-sec">
+            <button class="nav-btn" onclick="location.assign('/game/all')">Games</button>
+        </div>
+        <div class="nav-mini-sec">
+        <button class="nav-btn" onclick="location.assign('/user/logout')">Logout</button>
+        </div>
+       <%}%>
+       <% if(!locals.user){%>
+        <div class="nav-mini-sec">
+        <button class="nav-btn" onclick="location.assign('/user/sign-up')">Sign-up</button>
+        </div>
+       <%}%>
+       
+    </div>
+ </div>
+ </div>

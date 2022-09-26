@@ -1,0 +1,81 @@
+<%- include('includes/top.ejs') %> 
+<body>
+<div class="top">
+        <%- include('includes/nav.ejs') %> 
+    <div class="main">
+    <div class="form-container">
+      <form action = "/game/new" method="post">
+
+    <div class="form-section">
+        <label for="gameName">Game Name</label>
+        <input class='input-txt' name="gameName">
+    </div>
+    <div class="form-section">
+        <label for="gameType">Game Type</label>
+        <select class="select" name="robotType" id="robotType">
+            <option value="QUALIFIER" selected>QUALIFIER</option>
+            <option value="PLAYOFF">PLAYOFF</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <label for="gameTime">Game Time</label>
+        <input class='time-input' type="time" name="gameTime">
+    </div>
+    <div class="form-section">
+        <label for="ourAliance">Our Aliance</label>
+        <div class="aliance-container" name="ourAliance">
+            <select class='select' name="ourTeam1" id="ourTeam1">
+                <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
+                <% for(let i=1; i<teams.length; i++){%>
+                        <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                <% } %>
+            </select><br>
+            <select class='select' name="ourTeam2" id="ourTeam2">
+                <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
+                <% for(let i=1; i<teams.length; i++){%>
+                        <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                <% } %>
+            </select><br>
+            <label for="ourColor">Color</label>
+            <select name="ourColor" id="ourColor">
+                <option value="RED">RED</option>
+                <option value="BLUE">BLUE</option>
+            </select><br>
+        </div>
+    </div>
+    <div class="form-section">
+        <label for="theirAliance">Thier Aliance</label>
+        <div class="aliance-container" name="theirAliance">
+            <select class='select' name="theirTeam1" id="theirTeam1">
+                <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
+                <% for(let i=1; i<teams.length; i++){%>
+                        <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                <% } %>
+            </select><br>
+            <select class='select' name="theirTeam2" id="theirTeam2">
+                <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
+                <% for(let i=1; i<teams.length; i++){%>
+                        <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                <% } %>
+            </select><br>
+            <select class='select' name="theirTeam3" id="theirTeam3">
+                <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
+                <% for(let i=1; i<teams.length; i++){%>
+                        <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                <% } %>
+            </select><br>
+            <label for="theirColor">Color</label>
+            <select name="theirColor" id="theirColor">
+                <option value="RED" selected>RED</option>
+                <option value="BLUE">BLUE</option>
+            </select><br>
+        </div>
+    </div>
+        <button class="general-btn" type="submit">Add Game</button>
+        <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+</body>
