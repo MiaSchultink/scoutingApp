@@ -19,8 +19,8 @@ exports.getAllGames = async(req, res, next) =>{
 
 exports.getGame = async(req, res, next) =>{
     try{
-        const gameId = req.body.gameId
-        const game = await Game.findOne({_id: gameId}).exec()
+        const gameId = req.params.gameId
+        const game = await Game.findOne({_id: gameId}).populate('ourAliance').populate('opposingAliance').exec()
 
         res.render('game',{
             game:game

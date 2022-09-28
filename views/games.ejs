@@ -1,58 +1,30 @@
 <%- include('includes/top.ejs') %> 
 <body>
     <div class="top">
-    <script>
-        function decideTeamBackgroud(alianceColor, containerId){
-        
-        }
-    </script>
     <%- include('includes/nav.ejs') %> 
     <div class="main">
         <div class="page-container">
             <button class="general-btn" onclick="location.assign('/game/new')">Add Game</button>
-            <div class="game-container">
+            <div class="menu-games-container">
                 <% for(let i=0; i<games.length; i++) {%>
-                    
-                    <div class="game-title"><%=games[i].name%></div>
-                    <div class="game-category">Time: <%=games[i].time%></div>
-                    <div class="game-category">Type: <%=games[i].type%></div>
-
-                    <div class="aliance-heading">Our Aliance</div>
-                    <div class="game-team">
-                        <div class="team-info-container">
-                        <%-include('includes/team-info.ejs',{team: games[i].ourAliance[0]})%>
+                <div class="menu-game-container">
+                    <div class="game-name-container">
+                        <button class="link-btn game-name" onclick = "location.assign('/game/<%=games[i]._id%>')" type="submit"><%=games[i].name%></button>
+                    </div>
+                        <div class="btns-section">
+                            <form action="/game/update">
+                                <button class="small-btn" type="submit">Update</button>
+                                <input type="hidden" name="teamID" value = '<%=games[i]._id%>'>
+                                <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+                            </form>
+                            <form action="/game/delete">
+                                <button class="small-btn" type="submit">Delete</button>
+                                <input type="hidden" name="teamId" value = '<%=games[i]._id%>'>
+                                <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+                            </form>
                         </div>
                     </div>
-                    <div class="game-team">
-                        <div class="team-info-container">
-                        <%-include('includes/team-info.ejs',{team: games[i].ourAliance[1]})%>
-                        </div>
-                    </div>
-                    <div class="game-team">
-                        <div class="team-info-container">
-                        <%-include('includes/team-info.ejs',{team: games[i].ourAliance[2]})%>
-                        </div>
-                    </div>
-
-                    <div class="aliance-heading">Opposing Aliance</div>
-                    <div class="game-team">
-                        <div class="team-info-container">
-                        <%-include('includes/team-info.ejs',{team: games[i].opposingAliance[0]})%>
-                        </div>
-                    </div>
-                    <div class="game-team">
-                        <div class="team-info-container">
-                        <%-include('includes/team-info.ejs',{team: games[i].opposingAliance[1]})%>
-                        </div>
-                    </div>
-                    <div class="game-team">
-                        <div class="team-info-container">
-                        <%-include('includes/team-info.ejs',{team: games[i].opposingAliance[2]})%>
-                        </div>
-                    </div>
-
                 <% } %> 
-            
         </div>
       </div>
       </div>

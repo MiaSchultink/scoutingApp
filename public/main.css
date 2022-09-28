@@ -228,9 +228,22 @@ body {
         margin-top: 10px;
         border-radius: 10px;
     }
+    
     .team-info-container{
         border-radius: 10px;
         margin-top: 10px;
+    }
+    .menu-game-container{
+        padding: 20px;
+        background-color: var(--dark-grey);
+        margin-top: 10px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .game-name{
+        font-size: 25px;
     }
     .aliance-heading{
         font-size: 17px;
