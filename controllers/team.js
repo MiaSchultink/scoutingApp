@@ -131,5 +131,26 @@ exports.updateTeam = async(req, res, next) =>{
 }
 
 exports.deleteTeam = async(req, res, next) =>{
-    
+    try{
+        const team = await Team.findById(req.body.teamId).exec();
+        const games = await Game.find().exec();
+
+        for(let i=0; i<games.length; i++){
+            if(games[i].ourAliance.includes(team)){
+                games[i].ourAliance.pull(team)
+                await games[i].save()
+            }
+            else if(games[i].opposingAliance.includes(team)){
+                games[i].opposingAliance.pull(team)
+                await games[i].save()
+            }
+        }
+
+        await team.remove()
+        res.redirect('/team/all')
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
 }

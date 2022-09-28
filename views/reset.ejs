@@ -1,8 +1,7 @@
 <%- include('includes/top.ejs') %> 
 <body>
     <div class="top">
-    <%- include('includes/nav.ejs') %> 
-    
+        <%- include('includes/search.ejs') %> 
         <div class="main">
             <div class="auth-form-container">
         <form class="form" action="/user/login" method="post">
@@ -13,5 +12,6 @@
         </form>
     </div>
         </div>
+        <%- include('includes/nav.ejs') %>
     </div>
 </body>

@@ -1,21 +1,4 @@
 
- <button class="menu-btn" onclick="showNav()"><i class="far fa-ellipsis-h"></i></button>
-
- <script>
-    function showNav(){
-        const navBar = document.getElementById('nav-bar');
-        navBar.style.display = 'block'
-    }
-
-    function hideNav(){
-        const navBar = document.getElementById('nav-bar');
-        if(navBar.style.display=='block'){
-            navBar.style.display = 'none'
-            navBar.onclick = showNav()
-        }
-    }
- </script>
-
  <div id='nav-bar' class="nav-container">
     <div class="nav-section">
         <% if(!locals.isLoggedIn){%>

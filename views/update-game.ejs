@@ -4,7 +4,7 @@
 <%- include('includes/search.ejs') %> 
     <div class="main">
     <div class="form-container">
-      <form action = "/game/new" method="post">
+      <form action = "/game/update" method="post">
 
     <div class="form-section">
         <label for="gameName">Game Name</label>
@@ -71,12 +71,13 @@
             </select><br>
         </div>
     </div>
-        <button class="general-btn" type="submit">Add Game</button>
+        <button class="general-btn" type="submit">Update Game</button>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+        <input type="hidden" name="gameId" value = '<%=gameId%>'>
       </form>
     </div>
 </div>
-<%- include('includes/nav.ejs') %> 
+<%- include('includes/nav.ejs') %>
 </div>
 
 </body>

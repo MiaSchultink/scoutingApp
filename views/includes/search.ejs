@@ -1,0 +1,11 @@
+<div class="search-container">
+    <form class="search-form" action="/" method="post">
+    <div class="search-bar-container">
+      <input id="search-query"  class="search-bar" type="search" name="search-query">
+    </div>
+    <div class="search-btn-container">
+    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+      <input type="hidden" name="_csrf" value='<%=csrfToken%>'>
+    </form>
+  </div>

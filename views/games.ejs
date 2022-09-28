@@ -1,7 +1,7 @@
 <%- include('includes/top.ejs') %> 
 <body>
     <div class="top">
-    <%- include('includes/nav.ejs') %> 
+        <%- include('includes/search.ejs') %> 
     <div class="main">
         <div class="page-container">
             <button class="general-btn" onclick="location.assign('/game/new')">Add Game</button>
@@ -12,14 +12,10 @@
                         <button class="link-btn game-name" onclick = "location.assign('/game/<%=games[i]._id%>')" type="submit"><%=games[i].name%></button>
                     </div>
                         <div class="btns-section">
-                            <form action="/game/update">
-                                <button class="small-btn" type="submit">Update</button>
-                                <input type="hidden" name="teamID" value = '<%=games[i]._id%>'>
-                                <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
-                            </form>
-                            <form action="/game/delete">
+                                <button class="small-btn" onclick="location.assign('/game/update/<%=games[i]._id%>')">Update</button>
+                            <form action="/game/delete" method="post">
                                 <button class="small-btn" type="submit">Delete</button>
-                                <input type="hidden" name="teamId" value = '<%=games[i]._id%>'>
+                                <input type="hidden" name="gameId" value = '<%=games[i]._id%>'>
                                 <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
                             </form>
                         </div>
@@ -27,5 +23,7 @@
                 <% } %> 
         </div>
       </div>
+      </div>
+      <%- include('includes/nav.ejs') %> 
       </div>
 </body>
