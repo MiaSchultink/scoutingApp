@@ -202,10 +202,16 @@ body {
         justify-content: center;
         align-items: center;
     }
-    .btns-section{
+    .game-btns-section{
         grid-area: game-btns;
         display: block;
         padding:10px;
+    }
+    .team-btns-section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
     .small-btn{
         color: inherit;
@@ -253,8 +259,15 @@ body {
         /* justify-content: center;
         align-items: center; */
         grid-template-areas: "name aliances game-btns";
-        grid-template-columns:40px 1fr 40px;
-        grid-template-rows: auto 1fr;
+        grid-template-columns: 60px 1fr 40px;
+        grid-template-rows:auto 1fr;
+    }
+    .game-name-container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .game-name{
         grid-area: name;
@@ -269,19 +282,23 @@ body {
     }
 
     .search-container{
+        padding: 10px;
+    }
+    .grid-search-container{
         width: 100vw;
         display: grid;
-        grid-template-areas: "search btn";
-        grid-template-columns: 1fr 40px;
-        grid-template-rows: auto;
+        grid-template-areas: "search search-btn";
+        grid-template-columns: 1fr 60px;
+        grid-template-rows: 1fr;
     }
     .search-bar-container{
         grid-area: search;
-        width: 100%;
         color: white;
     }
+
     .search-btn-container{
-        grid-area: btn;
+        grid-area: search-btn;
+        margin: 5px;
     }
     .search-btn{
         color: inherit;
@@ -297,10 +314,11 @@ body {
     }
     .search-bar{
         width: 100%;
+        padding: 10px;
         background-color: transparent;
         outline: none;
         height: 50px;
-        border-radius: 10px;
+        border-radius: 25px;
         color: white;
         border: 1px solid #4f4f4f;
     }

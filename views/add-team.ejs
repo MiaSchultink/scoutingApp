@@ -1,7 +1,7 @@
 <%- include('includes/top.ejs') %> 
 <body>
 <div class="top">
-    <%- include('includes/search.ejs') %>       
+    <%- include('includes/search.ejs', {path: '/team/search'}) %>       
     <div class="main">
     <div class="form-container">
       <form action = "/team/new" method="post">

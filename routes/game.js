@@ -15,5 +15,7 @@ router.post('/new', isAuth, gameController.addGame)
 router.get('/update/:gameId', isAuth, gameController.getUpdateGame)
 router.post('/update', isAuth, gameController.updateGame)
 
+router.post('/search', isAuth, gameController.searchGames)
+
 router.post('/delete', isAuth, gameController.deleteGame)
 module.exports=  router;

@@ -1,7 +1,7 @@
 <%- include('includes/top.ejs') %> 
 <body>
     <div class="top">
-        <%- include('includes/search.ejs') %> 
+        <%- include('includes/search.ejs',{path:'/team/search'}) %> 
     <div class="main">
         <div class="page-container">
         <button class="general-btn" onclick="location.assign('/team/new')">Add Team</button>
@@ -16,13 +16,15 @@
                 <div class="team-category">Defense: <%=teams[i].defenseBot%></div>
                 <div class="team-category">Auto: <%=teams[i].numBallAuto%></div>
                 <div class="team-category">Comments: <%=teams[i].otherComments%></div>
-                <div class="btns-section">
+                <div class="team-btns-section">
+                
+                <button class="small-btn" onclick="location.assign('/team/view/<%=teams[i]._id%>')"><i class="fad fa-info"></i></button>
+                <button class="small-btn" onclick="location.assign('/team/update/<%=teams[i]._id%>')"><i class="fad fa-edit"></i></button>
                 <form action="/team/delete" method="post">
-                    <button class="small-btn" type="submit">Delete</button>
+                    <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
                     <input type="hidden" name="teamId" value = '<%=teams[i]._id%>'>
                     <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
                 </form>
-                <button class="small-btn" onclick="locaion.assign('/team/update/<%=teams[i]._id%>')">Update</button>
             
                 </div>
              <% } %> 

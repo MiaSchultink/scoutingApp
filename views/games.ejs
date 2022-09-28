@@ -1,7 +1,7 @@
 <%- include('includes/top.ejs') %> 
 <body>
     <div class="top">
-        <%- include('includes/search.ejs') %> 
+        <%- include('includes/search.ejs',{path:'/game/search'}) %> 
     <div class="main">
         <div class="page-container">
             <button class="general-btn" onclick="location.assign('/game/new')">Add Game</button>
@@ -42,7 +42,7 @@
                         }
 
                     </script>
-                        <div class="btns-section">
+                        <div class="game-btns-section">
                                 <button class="small-btn" onclick="location.assign('/game/update/<%=games[i]._id%>')"><i class="fad fa-edit"></i></button>
                             <form action="/game/delete" method="post">
                                 <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>

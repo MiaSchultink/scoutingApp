@@ -7,6 +7,7 @@ const isAdmin = require('../middlewear/is-admin')
 const teamController = require('../controllers/team');
 
 router.get('/all', isAuth, teamController.getAllTeams )
+router.get('/view/:teamId', isAuth, teamController.getTeam)
 
 router.get('/new', isAuth, teamController.getAddTeam)
 router.post('/new', isAuth, teamController.addTeam)
@@ -14,5 +15,7 @@ router.post('/new', isAuth, teamController.addTeam)
 router.post('/delete', isAuth, teamController.deleteTeam)
 
 router.get('/update',isAuth, teamController.getUpdateTeam)
+
+router.post('/search', isAuth, teamController.searchTeams)
 
 module.exports=  router;

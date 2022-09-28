@@ -18,6 +18,19 @@ exports.getAllTeams = async(req, res, next) =>{
     }
 }
 
+exports.getTeam = async(req, res, next)=>{
+    try{
+        const team = await Team.find({_id:req.body.teamId}).exec()
+        res.render('team',{
+            team:team
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
 exports.getAddTeam = async(req, res, next) =>{
     try{
         res.render('add-team')
@@ -148,6 +161,21 @@ exports.deleteTeam = async(req, res, next) =>{
 
         await team.remove()
         res.redirect('/team/all')
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
+exports.searchTeams = async(req, res, next) =>{
+    try{
+        const number = req.body.searchQuery
+        const team = await Team.find({number:number}).exec();
+
+        res.render('teams',{
+            teams:team
+        })
     }
     catch (err) {
         console.log(err)

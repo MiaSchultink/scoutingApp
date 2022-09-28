@@ -3,8 +3,9 @@
     <div class="top">
     <%- include('includes/search.ejs', {path:'/team/search'}) %> 
         <div class="main">
-        <div>Sorry, something went wrong</div><br>
-        <button class = "nav-button" onclick ="location.assign('/')">Return to home</button>
+            <div class="team-info-container">
+                <%- include('includes/team-info.ejs',{team:team})%>
+            </div>
         </div>
     <%- include('includes/nav.ejs') %> 
     </div>

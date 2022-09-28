@@ -158,3 +158,30 @@ exports.deleteGame = async(req, res, next) =>{
         res.render('error')
     }
 }
+
+exports.searchGames = async(req, res, next)=>{
+    try{
+        const query = req.body.searchQuery
+        console.log(query)
+        const teams= await Team.find().exec()
+
+        const games = await Game.find(
+            {
+                $and: [
+                    { $text: { $search: query } }
+                ]
+            })
+            .populate('ourAliance')
+            .populate('opposingAliance')
+            .exec();
+
+        res.render('games',{
+            games:games,
+            teams:teams
+        })
+    } 
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
