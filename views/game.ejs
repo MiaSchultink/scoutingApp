@@ -3,15 +3,16 @@
     <div class="top">
         <%- include('includes/search.ejs') %> 
     <div class="main">
+       
         <script>
             function decideTeamBackgroud(alianceColor, containerId){
                 const container = document.getElementById(containerId)
                 console.log(container)
                 if(alianceColor=='RED'){
-                    container.style.backgroundColor = '#ff0000'
+                    container.style.backgroundColor = '#780000'
                 }
                 else{
-                    container.style.backgroundColor = '#0066ff'
+                    container.style.backgroundColor= '#020188'
                 }
             }
         </script>
@@ -21,9 +22,11 @@
     <div class="game-category">Type: <%=game.type%></div>
 
     <div class="aliance-heading">Our Aliance</div>
+
+    <% const ourAlianceColor = game.ourColor %>
     <div class="game-team" id="with0">
         <script>
-            decideTeamBackgroud(game.ourColor,'with0')
+            decideTeamBackgroud('<%=ourAlianceColor%>','with0')
         </script>
         <div class="team-info-container">
         <%-include('includes/team-info.ejs',{team: game.ourAliance[0]})%>
@@ -31,7 +34,7 @@
     </div>
     <div class="game-team" id="with1">
         <script>
-            decideTeamBackgroud(games.ourColor,'with1')
+            decideTeamBackgroud('<%=ourAlianceColor%>','with1')
         </script>
         <div class="team-info-container">
         <%-include('includes/team-info.ejs',{team: game.ourAliance[1]})%>
@@ -39,17 +42,18 @@
     </div>
     <div class="game-team" id="with2">
         <script>
-            decideTeamBackgroud(game.ourColor,'with2')
+            decideTeamBackgroud('<%=ourAlianceColor%>','with2')
         </script>
         <div class="team-info-container">
         <%-include('includes/team-info.ejs',{team: game.ourAliance[2]})%>
         </div>
-    </div>
+    </div><br>
 
     <div class="aliance-heading">Opposing Aliance</div>
+    <% const opposingAlianceColor = game.theirColor %>
     <div class="game-team" id="against0">
         <script>
-            decideTeamBackgroud(game.theirColor,'against0')
+            decideTeamBackgroud('<%=opposingAlianceColor%>','against0')
         </script>
         <div class="team-info-container">
         <%-include('includes/team-info.ejs',{team: game.opposingAliance[0]})%>
@@ -57,7 +61,7 @@
     </div>
     <div class="game-team" id="against1">
         <script>
-            decideTeamBackgroud(game.theirColor,'against1')
+            decideTeamBackgroud('<%=opposingAlianceColor%>','against1')
         </script>
         <div class="team-info-container">
         <%-include('includes/team-info.ejs',{team: game.opposingAliance[1]})%>
@@ -65,7 +69,7 @@
     </div>
     <div class="game-team" id="against2">
         <script>
-            decideTeamBackgroud(game.theirColor,'against2')
+            decideTeamBackgroud('<%=opposingAlianceColor%>','against2')
         </script>
         <div class="team-info-container">
         <%-include('includes/team-info.ejs',{team: game.opposingAliance[2]})%>

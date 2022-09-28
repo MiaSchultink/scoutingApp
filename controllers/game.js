@@ -22,7 +22,7 @@ exports.getAllGames = async(req, res, next) =>{
 exports.getGame = async(req, res, next) =>{
     try{
         const gameId = req.params.gameId
-        const game = await Game.findOne({_id: gameId}).populate('ourAliance').populate('opposingAliance').exec()
+        const game = await Game.findById(gameId).populate('ourAliance').populate('opposingAliance').exec()
 
         res.render('game',{
             game:game

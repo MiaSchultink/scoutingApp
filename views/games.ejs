@@ -9,12 +9,43 @@
                 <% for(let i=0; i<games.length; i++) {%>
                 <div class="menu-game-container">
                     <div class="game-name-container">
-                        <button class="link-btn game-name" onclick = "location.assign('/game/<%=games[i]._id%>')" type="submit"><%=games[i].name%></button>
+                        <button class="link-btn game-name" onclick = "location.assign('/game/view/<%=games[i]._id%>')" type="submit"><%=games[i].name%></button>
                     </div>
+                   <div class="game-teams-container">
+                    <div class="game-teams-sub-container">
+                        <% const ourColor = games[i].ourColor %>
+                        <div class="with-container" id="with-container">
+                        <% for(let j=0; j<games[i].ourAliance.length; j++){%>
+                            <div class="game-team-number"><%=games[i].ourAliance[j].number%></div>
+                        <% } %>   
+                        </div>
+                        <% const theirColor = games[i].theirColor %>
+                        <div class="against-container" id="against-container">
+                            <% for(let k=0; k<games[i].opposingAliance.length; k++){%>
+                                <div class="game-team-number"><%=games[i].opposingAliance[k].number%></div>
+                            <% } %>   
+                        </div>
+                    </div>
+                </div>
+                    <script>
+                        const us = document.getElementById("with-container")
+                        const them  = document.getElementById('against-container');
+                        const red = '#780000'
+                        const blue ='#020188'
+                        if('<%=ourColor%>'=='RED'){
+                            us.style.backgroundColor = red
+                            them.style.backgroundColor = blue
+                        }
+                        else{
+                            us.style.backgroundColor = blue
+                            them.style.backgroundColor = red
+                        }
+
+                    </script>
                         <div class="btns-section">
-                                <button class="small-btn" onclick="location.assign('/game/update/<%=games[i]._id%>')">Update</button>
+                                <button class="small-btn" onclick="location.assign('/game/update/<%=games[i]._id%>')"><i class="fad fa-edit"></i></button>
                             <form action="/game/delete" method="post">
-                                <button class="small-btn" type="submit">Delete</button>
+                                <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
                                 <input type="hidden" name="gameId" value = '<%=games[i]._id%>'>
                                 <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
                             </form>
