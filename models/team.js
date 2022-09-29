@@ -48,6 +48,16 @@ const teamSchema = new Schema({
     blueAlianceURL:{
         type:String
     },
+    movedInLastGame:{
+        type: Boolean,
+        default: true
+    },
+    numBallsShot:{
+        type:Number
+    },
+    numBallsMissed:{
+        type:Number
+    },
     otherComments:{
         type:String
     }

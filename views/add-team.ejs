@@ -69,6 +69,10 @@
         <label for="otherComments">Other Comments</label><br>
         <input class="big-input" type="text" name="otherComments"><br>
     </div>
+    <div class="form-section">
+        <input class="check" type="checkbox" name="movedInLastGame">
+        <label for="movedInLastGame">Didn't move in last game</label>
+    </div>
         <button class="general-btn" type="submit">Add Team</button>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
       </form>

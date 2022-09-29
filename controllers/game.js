@@ -145,6 +145,7 @@ exports.updateGame = async(req, res, next) =>{
 
 exports.deleteGame = async(req, res, next) =>{
     try{
+       // confirm("Are you sure you want to delete this game?");
         const game = await Game.findById(req.body.gameId).exec();
         if(ourUpcomingGames.includes(game)){
             ourUpcomingGames.pull(game);

@@ -20,7 +20,8 @@ exports.getAllTeams = async(req, res, next) =>{
 
 exports.getTeam = async(req, res, next)=>{
     try{
-        const team = await Team.find({_id:req.body.teamId}).exec()
+        const team = await Team.find({_id:req.params.teamId}).exec()
+        console.log(team)
         res.render('team',{
             team:team
         })
@@ -91,7 +92,7 @@ exports.addTeam = async(req, res, next) =>{
 
 exports.getUpdateTeam = async(req, res, next) =>{
     try{
-        const team = await Team.find({_id:req.body.teamId}).exec();
+        const team = await Team.find({_id:req.params.teamId}).exec();
 
         res.render('update-team',{
             team:team
@@ -145,6 +146,7 @@ exports.updateTeam = async(req, res, next) =>{
 
 exports.deleteTeam = async(req, res, next) =>{
     try{
+    // confirm("Are you sure you want to delete this team?");
         const team = await Team.findById(req.body.teamId).exec();
         const games = await Game.find().exec();
 

@@ -14,7 +14,8 @@ router.post('/new', isAuth, teamController.addTeam)
 
 router.post('/delete', isAuth, teamController.deleteTeam)
 
-router.get('/update',isAuth, teamController.getUpdateTeam)
+router.get('/update/:teamId',isAuth, teamController.getUpdateTeam)
+router.post('/update', isAuth,teamController.updateTeam)
 
 router.post('/search', isAuth, teamController.searchTeams)
 
