@@ -37,26 +37,44 @@ const teamSchema = new Schema({
         enum: ['BAD','OK','GOOD'],
         default:'OK'
     },
+    autoConsistency:{
+        type:String,
+        enum: ['BAD','OK','GOOD'],
+        default:'OK'
+    },
     defenseBot:{
         type:String,
         enum: ['NOT','BAD','OK','GOOD'],
         default:'NOT'
     },
     numBallAuto:{
-        type:Number
+        type:Number,
+        default:0
     },
     blueAlianceURL:{
-        type:String
+        type:String,
+        default:0
     },
     movedInLastGame:{
         type: Boolean,
         default: true
     },
+    showedUpToLastGame:{
+        type:Boolean,
+        default: true
+    },
     numBallsShot:{
-        type:Number
+        type:Number,
+        default:0
     },
     numBallsMissed:{
-        type:Number
+        type:Number,
+        default:0
+    },
+    teamWorkRating:{
+        type:String,
+        enum: ['SOLO',"TEAM"],
+        default:'SOLO'
     },
     otherComments:{
         type:String

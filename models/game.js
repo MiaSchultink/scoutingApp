@@ -20,6 +20,17 @@ const gameSchema = new Schema({
             ref:'Team'
         }
     ],
+    allience: [
+        {
+           type: {
+                team: {
+                    type:mongoose.Schema.Types.ObjectId,
+                    ref:'Team'
+                },
+                startingPosition: Number
+           }
+        }
+    ],
     ourColor:{
         type:String,
         enum:['RED','BLUE']

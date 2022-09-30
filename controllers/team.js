@@ -53,6 +53,24 @@ exports.addTeam = async(req, res, next) =>{
         const shootingConsistency = req.body.shooterConsistency
         const defenseBot = req.body.defenseBot
         const numBallAuto = req.body.numBallAuto
+        const ballsShot = req.body.ballsShot;
+        const ballsMissed = req.body.ballsMissed;
+        const teamWorkRating = req.body.teamWork;
+        const autoConsitency = req.body.autoConsitency;
+
+        let movedInLastGame = true;
+        const checkbox = document.getElementById('movedCheck');
+        if(checkbox.checked==true){
+            movedInLastGame = false;
+        }
+
+        let showedUpToLastGame = true;
+        const check2 = document.getElementById('showCheck')
+        if
+        (check2.checked==true){
+            showedUpToLastGame=false;
+        }
+
         const otherComments = req.body.otherComments
 
         const url =  "https://www.thebluealliance.com/team/"+number+"/"+YEAR
@@ -77,7 +95,13 @@ exports.addTeam = async(req, res, next) =>{
             defenseBot: defenseBot,
             numBallAuto: numBallAuto,
             otherComments: otherComments,
-            blueAlianceURL: url
+            blueAlianceURL: url,
+            ballsShot: ballsShot,
+            ballsMissed: ballsMissed,
+            movedInLastGame: movedInLastGame,
+            showedUpToLastGame: showedUpToLastGame,
+            teamWorkRating: teamWorkRating,
+            autoConsistency: autoConsitency
         })
 
         await team.save()

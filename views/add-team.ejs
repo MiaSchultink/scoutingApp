@@ -4,7 +4,7 @@
     <%- include('includes/search.ejs', {path: '/team/search'}) %>       
     <div class="main">
     <div class="form-container">
-      <form action = "/team/new" method="post">
+      <form action = "/team/new" method="post" autocomplete="off">
     <div class="form-section">
         <label for="teamName">Name</label>
         <input class="input-txt" name = "teamName" required>
@@ -62,16 +62,43 @@
         </select><br>
     </div>
     <div class="form-section">
+        <label for="autoConsistency">Auto Consistency</label>
+        <select class="select" name="autoConsistency" id="autoConsistency">
+            <option value="BAD" selected>BAD</option>
+            <option value="OK">MID</option>
+            <option value="GOOD">GOOD</option>
+        </select><br>
+    </div>
+    <div class="form-section">
         <label for="numBallAuto">Balls in Auto</label>
         <input class="num-input" type="number" name="numBallAuto"><br>
     </div>
     <div class="form-section">
-        <label for="otherComments">Other Comments</label><br>
-        <input class="big-input" type="text" name="otherComments"><br>
+        <label for="ballsShot">Balls Shot</label>
+        <input class="num-input" type="number" name="ballsShot"><br>
     </div>
     <div class="form-section">
-        <input class="check" type="checkbox" name="movedInLastGame">
+        <label for="ballsMissed">Balls Missed</label>
+        <input class="num-input" type="number" name="ballsMissed"><br>
+    </div>
+    <div class="form-section">
+        <label for="teamWork">Team Work Rating</label>
+        <select name="teamWork" id="teamWork">
+            <option value="TEAM">TEAM</option>
+            <option value="SOLO">SOLO</option>
+        </select><br>
+    </div>
+    <div class="form-section">
+        <input class="check" type="checkbox" name="movedInLastGame" id="movedCheck">
         <label for="movedInLastGame">Didn't move in last game</label>
+    </div>
+    <div class="form-section">
+        <input class="check" type="checkbox" name="showedUoToLastGame" id="showedCheck">
+        <label for="showedUoToLastGame">Didn't show up to last game</label>
+    </div>
+    <div class="form-section">
+        <label for="otherComments">Other Comments</label><br>
+        <input class="big-input" type="text" name="otherComments"><br>
     </div>
         <button class="general-btn" type="submit">Add Team</button>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>

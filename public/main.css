@@ -15,6 +15,7 @@ body {
     color: white;
     padding: 0;
     margin: 0;
+    overflow: scroll;
 }
 
 @media screen and (max-width: 480px) {
@@ -188,11 +189,14 @@ body {
         width: 90vw;
         padding: 20px;
     }
-    .team-container{
+    .teams-container{
         margin-top: 10px;
-        padding: 20px;
-        border-radius: 10px;
+    }
+    .team-container{
         background-color: var(--dark-grey);
+        border-radius: 10px;
+        margin: 5px;
+        padding: 7px;
     }
     .team-title{
         font-size: 20px;

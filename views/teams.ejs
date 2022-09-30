@@ -5,17 +5,10 @@
     <div class="main">
         <div class="page-container">
         <button class="general-btn" onclick="location.assign('/team/new')">Add Team</button>
-        <div class="team-container">
+        <div class="teams-container">
             <% for(let i=0; i<teams.length; i++){%>
+            <div class="team-container">
                 <div class="team-title"><%=teams[i].name%> <%=teams[i].number%></div>
-                <div class="team-category">Robot Type: <%=teams[i].robotType%></div>
-                <div class="team-category">Shoot: <%=teams[i].shooterType%></div>
-                <div class="team-category">Bar: <%=teams[i].barReached%></div>
-                <div class="team-category">Climbing: <%=teams[i].climbingConsistency%></div>
-                <div class="team-category">Shooting: <%=teams[i].shootingConsistency%></div>
-                <div class="team-category">Defense: <%=teams[i].defenseBot%></div>
-                <div class="team-category">Auto: <%=teams[i].numBallAuto%></div>
-                <div class="team-category">Comments: <%=teams[i].otherComments%></div>
                 <div class="team-btns-section">
                 
                 <button class="small-btn" onclick="location.assign('/team/view/<%=teams[i]._id%>')"><i class="fad fa-info"></i></button>
@@ -27,6 +20,7 @@
                 </form>
             
                 </div>
+            </div>
              <% } %> 
         </div>
       </div>
