@@ -14,22 +14,29 @@
                    <div class="game-teams-container">
                     <div class="game-teams-sub-container">
                         <% const ourColor = games[i].ourAliance.color%>
-                    <div class="with-container" id="with-container">
+                        <% const withId = "with-container"+i; %>
+                        <%let containerClass = (ourColor == 'RED') ? 'red-container' : 'blue-container'%>
+                    <div class="with-container <%=containerClass%>" id='<%=withId%>'>
                         <div class="game-team-number"><%=games[i].ourAliance.team1.number%></div>
                         <div class="game-team-number"><%=games[i].ourAliance.team2.number%></div>
-                        <div class="game-team-number"><%=games[i].ourAliance.team2.number%></div>
+                        <div class="game-team-number"><%=games[i].ourAliance.team3.number%></div>
                      </div>
                         <% const theirColor = games[i].opposingAliance.color%>
-                        <div class="against-container" id="against-container">
+                        <% const opId = "gainst-container"+i;%>
+                        <% containerClass=(theirColor=='RED') ? 'red-container' : 'blue-container'%>
+                        <div class="against-container <%=containerClass%>" id="<%=opId%>">
                                 <div class="game-team-number"><%=games[i].opposingAliance.team1.number%></div>
                                 <div class="game-team-number"><%=games[i].opposingAliance.team2.number%></div>
                                 <div class="game-team-number"><%=games[i].opposingAliance.team3.number%></div>
                         </div>
                     </div>
                 </div>
-                    <script>
-                        const us = document.getElementById("with-container")
-                        const them  = document.getElementById('against-container');
+                    <!-- <script>
+                        console.log('hello')
+                        const us = document.getElementById(withId);
+                        console.log('with',withId)
+                        console.log(us)
+                        const them  = document.getElementById(opId);
                         const red = '#780000'
                         const blue ='#020188'
                         if('<%=ourColor%>'=='RED'){
@@ -41,7 +48,7 @@
                             them.style.backgroundColor = red
                         }
 
-                    </script>
+                    </script> -->
                         <div class="game-btns-section">
                                 <button class="small-btn" onclick="location.assign('/game/update/<%=games[i]._id%>')"><i class="fad fa-edit"></i></button>
                             <form action="/game/delete" method="post">

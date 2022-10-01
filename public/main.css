@@ -4,6 +4,8 @@
     --nav-width: 200px;
     --search-height: 40px;
     --dark-primary: #950101;
+    --aliance-red:#780000;
+    --aliance-blue:#020188;
     --primary: #FF0000;
     --dark-grey: #1F1F1F
 }
@@ -32,6 +34,7 @@ body {
         display: flex;
         padding: 20px;
         justify-content: center;
+        padding-bottom: 70px;
     }
     .home{
         font-size: 50px;
@@ -300,6 +303,12 @@ body {
         grid-area: name;
         font-size: 25px;
     }
+    .red-container{
+        background-color: var(--aliance-red);
+    }
+    .blue-container{
+        background-color: var(--aliance-blue);
+    }
     .aliance-heading{
         font-size: 17px;
         width: 100%;
@@ -369,6 +378,7 @@ body {
     .game-teams-sub-container{
         grid-area: aliances;
         width: 100%;
+        border-radius: 10px;
     }
     .game-teams-container{
         width: 100%;

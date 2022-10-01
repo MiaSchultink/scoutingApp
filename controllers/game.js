@@ -181,14 +181,13 @@ exports.addGame = async (req, res, next) => {
         const ourAliance = new Aliance({
             team1: withTeam1,
             team2: withTeam2,
-            team3: ourTeam,
+            team3: ourTeam._id,
             color: ourColor,
             startPos1: ourPos1,
             startPos2: ourPos2,
             startPos3: ourPos3
         })
         await ourAliance.save();
-
         //const ourAliance = [withTeam1, withTeam2, ourTeam]
 
         const gameTime = req.body.gameTime
@@ -217,7 +216,51 @@ exports.getUpdateGame = async (req, res, next) => {
     try {
         const teams = await Team.find().exec();
         const gameId = req.params.gameId
-        const game = await Game.findById(gameId).populate('ourAliance').populate('opposingAliance').exec()
+        const game = await Game.findById(gameId)
+        .populate({
+            path: 'ourAliance',
+            populate: {
+                path: 'team1',
+                model: 'Team'
+            }
+        })
+        .populate({
+            path: 'ourAliance',
+            populate: {
+                path: 'team2',
+                model: 'Team'
+            }
+        })
+        .populate({
+            path: 'ourAliance',
+            populate: {
+                path: 'team3',
+                model: 'Team'
+            }
+        })
+        .populate('opposingAliance')
+        .populate({
+            path: 'opposingAliance',
+            populate: {
+                path: 'team1',
+                model: 'Team'
+            }
+        })
+        .populate({
+            path: 'opposingAliance',
+            populate: {
+                path: 'team2',
+                model: 'Team'
+            }
+        })
+        .populate({
+            path: 'opposingAliance',
+            populate: {
+                path: 'team3',
+                model: 'Team'
+            }
+        }).exec()
+
         res.render('update-game.ejs', {
             teams: teams,
             game:game
@@ -260,6 +303,7 @@ exports.updateGame = async (req, res, next) => {
 
         const withTeam1 = req.body.ourTeam1;
         const withTeam2 = req.body.theirTeam2;
+
         const ourTeam = await Team.findOne({ number: 4338 }).exec();
 
         const ourPos1= req.body.our1Pos;
@@ -277,14 +321,14 @@ exports.updateGame = async (req, res, next) => {
         ourAliance.startPos1 = ourPos1;
         ourAliance.startPos2 = ourPos2;
         ourAliance.startPos3 = ourPos3;
-        
+
         ourAliance.color= ourColor
         await ourAliance.save();
 
         const gameTime = req.body.gameTime
 
         game.type = gameType;
-        game.name = gameName
+        game.name = gameName;
         game.opposingAliance = opposingAliance;
         game.ourAliance = ourAliance;
         game.time = gameTime

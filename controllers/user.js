@@ -133,7 +133,103 @@ exports.postReset = async (req, res, next) => {
         }
     }
     catch (err) {
-        console.log('Error in postReset', err)
+        console.log(err)
         res.render('error')
     }
 }
+
+exports.getReset = (req, res, next) => {
+    try {
+        res.render('reset')
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
+exports.postReset = async (req, res, next) => {
+    try {
+        const token = crypto.randomBytes(32).toString('hex');
+        const user = await User.findOne({ email: req.body.email }).exec()
+        if (!user) { throw new Error('No accounts with this email') }
+        else {
+            user.resetToken = token;
+            user.resetTokenExpiration = Date.now() + 3600000
+            await user.save()
+            const host = (process.env.NODE_ENV == 'development') ?
+                'http://localhost:3000' :
+                'http://www.miaschultink.com'
+            const message = {
+                to: req.body.email,
+                from: 'contact@miaschultink.com',
+                subject: 'Password Reset',
+                html: `
+        <p>You requested a password reset.</p>
+        <p>Click this <a href ="${host}/users/reset/${token}">link</a></p>`
+            }
+            await sgMail.send(message)
+            res.redirect('/');
+        }
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
+exports.getNewPassword = async (req, res, next) => {
+    try {
+        const token = req.params.token;
+        const user = await User.findOne({ resetToken: token, resetTokenExpiration: { $gt: Date.now() } }).exec()
+        if (user) {
+            res.render('new-password', {
+                pageTitle: 'New-Password',
+                path: 'users/new-password',
+                userId: user._id.toString(),
+                passwordToken: token
+            });
+        }
+        else {
+            res.redirect('/users/reset')
+        }
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+exports.postNewPassword = async (req, res, next) => {
+    try {
+        const newPassword = req.body.password;
+        const userId = req.body.userId;
+        const passwordToken = req.body.passwordToken;
+
+
+        const user = await User.findOne({ resetToken: passwordToken, resetTokenExpiration: { $gt: Date.now() }, _id: userId }).exec()
+        const hashedPassword = await bcrypt.hash(newPassword, 12)
+
+        user.password = hashedPassword;
+        user.resetToken = null;
+        user.resetTokenExpiration = undefined;
+
+        await user.save();
+        res.redirect('/users/login')
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+};
+
+exports.logout = (req, res, next) => {
+    try{
+       req.session.destroy();
+       res.redirect('/user/login')
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+    
+};

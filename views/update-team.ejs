@@ -4,7 +4,7 @@
     <%- include('includes/search.ejs',{path:'/team/search'}) %> 
     <div class="main">
     <div class="form-container">
-      <form action = "/team/update" method="post">
+      <form action = "/team/update" method="post" autocomplete="off">
     <div class="form-section">
         <label for="teamName">Name</label>
         <input class="input-txt" name = "teamName" value ="<%=team.name%>" required>

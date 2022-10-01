@@ -8,14 +8,17 @@
         <%}%>
        <% if(locals.isLoggedIn){%>
         <div class="nav-mini-sec">
-            <button class="nav-btn" onclick="location.assign('/team/all')">Teams</button>
+            <button class="nav-btn" onclick="location.assign('/team/all')"><i class="fas fa-users"></i></button>
         </div>
         <div class="nav-section">
             <div class="nav-mini-sec">
-            <button class="nav-btn" onclick="location.assign('/game/all')">Games</button>
+            <button class="nav-btn" onclick="location.assign('/game/all')"><i class="fas fa-gamepad-alt"></i></button>
         </div>
         <div class="nav-mini-sec">
-        <button class="nav-btn" onclick="location.assign('/user/logout')">Logout</button>
+            <form action="/user/logout" method="post">
+                <button class="nav-btn" type="submit">Logout</button>
+                <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+            </form>
         </div>
        <%}%>
        <% if(!locals.user){%>
