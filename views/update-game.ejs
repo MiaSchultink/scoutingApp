@@ -19,7 +19,7 @@
     </div>
     <div class="form-section">
         <label for="gameTime">Game Time</label>
-        <input class='time-input' type="time" name="gameTime">
+        <input class='time-input' type="time" name="gameTime" value="<%=game.time%>">
     </div>
     <div class="form-section">
         <label for="ourAliance">Our Aliance</label>
@@ -27,14 +27,49 @@
             <select class='select' name="ourTeam1" id="ourTeam1">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
+                    <% if(teams[i].number==game.ourAliance.team1.number){%> 
+                        <option value="<%=teams[i]._id%>" selected><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <%}
+                    else{%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <% } %> 
                 <% } %>
+            </select>
+            <select name="our1Pos" id="our1Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <select class='select' name="ourTeam2" id="ourTeam2">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
+                    <% if(teams[i].number==game.ourAliance.team2.number){%> 
+                        <option value="<%=teams[i]._id%>" selected><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <%}
+                    else{%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <% } %> 
                 <% } %>
+            </select>
+            <select name="our2Pos" id="our2Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
+            </select><br>
+            <label for="ourAutoPos">Our Auto Position</label>
+            <select name="ourAutoPos" id="ourAutoPos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <label for="ourColor">Color</label>
             <select name="ourColor" id="ourColor">
@@ -49,20 +84,59 @@
             <select class='select' name="theirTeam1" id="theirTeam1">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
+                    <% if(teams[i].number==game.opposingAliance.team1.number){%> 
+                        <option value="<%=teams[i]._id%>" selected><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <%}
+                    else{%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <% } %> 
                 <% } %>
+            </select>
+            <select name="their1Pos" id="their1Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <select class='select' name="theirTeam2" id="theirTeam2">
-                <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
+                <option value="<%=teams[0]._id%>"><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
+                    <% if(teams[i].number==game.opposingAliance.team2.number){%> 
+                        <option value="<%=teams[i]._id%>" selected><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <%}
+                    else{%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <% } %> 
                 <% } %>
+            </select>
+            <select name="their2Pos" id="their2Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <select class='select' name="theirTeam3" id="theirTeam3">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
+                    <% if(teams[i].number==game.opposingAliance.team3.number){%> 
+                        <option value="<%=teams[i]._id%>" selected><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <%}
+                    else{%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
+                    <% } %> 
                 <% } %>
+            </select>
+            <select name="their3Pos" id="their3Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <label for="theirColor">Color</label>
             <select name="theirColor" id="theirColor">
@@ -73,7 +147,9 @@
     </div>
         <button class="general-btn" type="submit">Update Game</button>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
-        <input type="hidden" name="gameId" value = '<%=gameId%>'>
+        <input type="hidden" name="gameId" value = '<%=game._id%>'>
+        <input type="hidden" name="oppAlianceId" value="<%=game.opposingAliance._id%>">
+        <input type="hidden" name="ourAlianceId" value="<%=game.ourAliance._id%>">
       </form>
     </div>
 </div>

@@ -27,11 +27,15 @@ body {
         margin: 0;
     }
 
-
+   
     .main {
         display: flex;
         padding: 20px;
         justify-content: center;
+    }
+    .home{
+        font-size: 50px;
+        font-weight: bold;
     }
 
     .top {
@@ -60,7 +64,16 @@ body {
         -webkit-appearance: none;
         height: 30px;
     }
-
+    select{
+        background-color: var(--secondary-background);
+        border-radius: 10px;
+        height: 25px;
+        color: white;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        padding: 5px;
+    }
     .num-input{
         padding: 5px;
         width: 25%;
@@ -71,6 +84,16 @@ body {
         outline: none;
         -webkit-appearance: none;
         height: 30px;
+    }
+    .time-input{
+        background-color: var(--secondary-background);
+        border-radius: 10px;
+        height: 25px;
+        color: white;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        padding: 5px;
     }
     .big-input{
         padding: 5px;

@@ -29,12 +29,37 @@
                 <% for(let i=1; i<teams.length; i++){%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
                 <% } %>
+            </select>
+            <select name="our1Pos" id="our1Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <select class='select' name="ourTeam2" id="ourTeam2">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
                 <% } %>
+            </select>
+            <select name="our2Pos" id="our2Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
+            </select><br>
+            <label for="ourAutoPos">Our Auto Position</label>
+            <select name="ourAutoPos" id="ourAutoPos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <label for="ourColor">Color</label>
             <select name="ourColor" id="ourColor">
@@ -51,18 +76,42 @@
                 <% for(let i=1; i<teams.length; i++){%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
                 <% } %>
+            </select>
+            <select name="their1Pos" id="their1Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <select class='select' name="theirTeam2" id="theirTeam2">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
                 <% } %>
+            </select>
+            <select name="their2Pos" id="their2Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <select class='select' name="theirTeam3" id="theirTeam3">
                 <option value="<%=teams[0]._id%>" selected><%=teams[0].name%></option>
                 <% for(let i=1; i<teams.length; i++){%>
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
                 <% } %>
+            </select>
+            <select name="their3Pos" id="their3Pos">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="5">6</option>
             </select><br>
             <label for="theirColor">Color</label>
             <select name="theirColor" id="theirColor">

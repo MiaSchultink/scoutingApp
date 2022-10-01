@@ -13,17 +13,17 @@
                     </div>
                    <div class="game-teams-container">
                     <div class="game-teams-sub-container">
-                        <% const ourColor = games[i].ourColor %>
-                        <div class="with-container" id="with-container">
-                        <% for(let j=0; j<games[i].ourAliance.length; j++){%>
-                            <div class="game-team-number"><%=games[i].ourAliance[j].number%></div>
-                        <% } %>   
-                        </div>
-                        <% const theirColor = games[i].theirColor %>
+                        <% const ourColor = games[i].ourAliance.color%>
+                    <div class="with-container" id="with-container">
+                        <div class="game-team-number"><%=games[i].ourAliance.team1.number%></div>
+                        <div class="game-team-number"><%=games[i].ourAliance.team2.number%></div>
+                        <div class="game-team-number"><%=games[i].ourAliance.team2.number%></div>
+                     </div>
+                        <% const theirColor = games[i].opposingAliance.color%>
                         <div class="against-container" id="against-container">
-                            <% for(let k=0; k<games[i].opposingAliance.length; k++){%>
-                                <div class="game-team-number"><%=games[i].opposingAliance[k].number%></div>
-                            <% } %>   
+                                <div class="game-team-number"><%=games[i].opposingAliance.team1.number%></div>
+                                <div class="game-team-number"><%=games[i].opposingAliance.team2.number%></div>
+                                <div class="game-team-number"><%=games[i].opposingAliance.team3.number%></div>
                         </div>
                     </div>
                 </div>
@@ -47,6 +47,8 @@
                             <form action="/game/delete" method="post">
                                 <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
                                 <input type="hidden" name="gameId" value = '<%=games[i]._id%>'>
+                                <input type="hidden" name="ourAlianceId" value = '<%=games[i].ourAliance._id%>'>
+                                <input type="hidden" name="oppAlianceId" value = '<%=games[i].opposingAliance._id%>'>
                                 <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
                             </form>
                         </div>

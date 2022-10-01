@@ -7,17 +7,17 @@
       <form action = "/team/update" method="post">
     <div class="form-section">
         <label for="teamName">Name</label>
-        <input class="input-txt" name = "teamName" required>
+        <input class="input-txt" name = "teamName" value ="<%=team.name%>" required>
     </div>
     <div class="form-section">
         <label for="teamNumber">Number</label>
-        <input class="num-input" name ="teamNumber" required><br>
+        <input class="num-input" name ="teamNumber" value="<%=team.number%>" required><br>
     </div>
     <div class="form-section">
         <label for="robotType">Robot Type</label>
         <select class="select" name="robotType" id="robotType">
             <option value="TANK">TANK</option>
-            <option value="SWERVE">SWERVE</option>
+            <option value="SWERVE" selected>SWERVE</option>
         </select><br>
     </div>
     <div class="form-section">
@@ -71,15 +71,15 @@
     </div>
     <div class="form-section">
         <label for="numBallAuto">Balls in Auto</label>
-        <input class="num-input" type="number" name="numBallAuto"><br>
+        <input class="num-input" type="number" name="numBallAuto" value="<%=team.numBallAuto%>"><br>
     </div>
     <div class="form-section">
         <label for="ballsShot">Balls Shot</label>
-        <input class="num-input" type="number" name="ballsShot"><br>
+        <input class="num-input" type="number" name="ballsShot" value="<%=team.ballsShot%>"><br>
     </div>
     <div class="form-section">
         <label for="ballsMissed">Balls Missed</label>
-        <input class="num-input" type="number" name="ballsMissed"><br>
+        <input class="num-input" type="number" name="ballsMissed" value="<%=team.ballsMissed%>"><br>
     </div>
     <div class="form-section">
         <label for="teamWork">Team Work Rating</label>
