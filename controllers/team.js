@@ -58,17 +58,17 @@ exports.addTeam = async(req, res, next) =>{
         const teamWorkRating = req.body.teamWork;
         const autoConsitency = req.body.autoConsitency;
 
-        let movedInLastGame = true;
+        let movedInLastGame = 'YES';
         const checkbox = document.getElementById('movedCheck');
         if(checkbox.checked==true){
-            movedInLastGame = false;
+            movedInLastGame = 'NO';
         }
 
-        let showedUpToLastGame = true;
+        let showedUpToLastGame = 'YES';
         const check2 = document.getElementById('showCheck')
         if
         (check2.checked==true){
-            showedUpToLastGame=false;
+            showedUpToLastGame='NO';
         }
 
         const otherComments = req.body.otherComments
@@ -175,12 +175,12 @@ exports.deleteTeam = async(req, res, next) =>{
         const games = await Game.find().exec();
 
         for(let i=0; i<games.length; i++){
-            if(games[i].ourAliance.includes(team)){
-                games[i].ourAliance.pull(team)
+            if(games[i].redAliance.includes(team)){
+                games[i].redAliance.pull(team)
                 await games[i].save()
             }
-            else if(games[i].opposingAliance.includes(team)){
-                games[i].opposingAliance.pull(team)
+            else if(games[i].blueAliance.includes(team)){
+                games[i].blueAliance.pull(team)
                 await games[i].save()
             }
         }

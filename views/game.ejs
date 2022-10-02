@@ -3,84 +3,29 @@
     <div class="top">
         <%- include('includes/search.ejs', {path:'/game/search'}) %> 
     <div class="main">
-       
-        <script>
-            function decideTeamBackgroud(alianceColor, containerId){
-                const container = document.getElementById(containerId)
-                console.log(container)
-                if(alianceColor=='RED'){
-                    container.style.backgroundColor = '#780000'
-                }
-                else{
-                    container.style.backgroundColor= '#020188'
-                }
-            }
-        </script>
+        
 <div class="game-container">
     <div class="game-title"><%=game.name%></div>
     <div class="game-category">Time: <%=game.time%></div>
     <div class="game-category">Type: <%=game.type%></div>
 
-    <div class="aliance-heading">Our Aliance</div>
-
-    <% const ourAlianceColor = game.ourAliance.color%>
-    <div class="game-team" id="with0">
-        <script>
-            decideTeamBackgroud('<%=ourAlianceColor%>','with0')
-        </script>
-        <div class="team-info-container">
-        <div class="startPos">Auto Positon: <%=game.ourAliance.startPos1%></div>
-        <%-include('includes/team-info.ejs',{team: game.ourAliance.team1})%>
+    <div class="aliances-cotainer">
+        <div class="red-aliance-container">
+            <% for(let i=0; i<game.redAliance.length; i++){%>
+                <div class="red-aliance">
+                    <%-include('includes/team-info.ejs',{team: game.redAliance[i]})%>
+                </div>
+            <% } %> 
+        </div>
+        <div class="blue-aliance-container">
+            <% for(let i=0; i<game.blueAliance.length; i++){%>
+                <div class="blue-aliance">
+                    <%-include('includes/team-info.ejs',{team: game.blueAliance[i]})%>
+                </div>
+            <% } %> 
         </div>
     </div>
-    <div class="game-team" id="with1">
-        <script>
-            decideTeamBackgroud('<%=ourAlianceColor%>','with1')
-        </script>
-        <div class="team-info-container">
-        <div class="startPos">Auto Positon: <%=game.ourAliance.startPos2%></div>
-        <%-include('includes/team-info.ejs',{team: game.ourAliance.team2})%>
-        </div>
-    </div>
-    <div class="game-team" id="with2">
-        <script>
-            decideTeamBackgroud('<%=ourAlianceColor%>','with2')
-        </script>
-        <div class="team-info-container">
-        <div class="startPos">Auto Positon: <%=game.ourAliance.startPos3%></div>
-        <%-include('includes/team-info.ejs',{team: game.ourAliance.team3})%>
-        </div>
-    </div><br>
-
-    <div class="aliance-heading">Opposing Aliance</div>
-    <% const opposingAlianceColor = game.opposingAliance.color%>
-    <div class="game-team" id="against0">
-        <script>
-            decideTeamBackgroud('<%=opposingAlianceColor%>','against0')
-        </script>
-        <div class="team-info-container">
-         <div class="startPos">Auto Positon: <%=game.opposingAliance.startPos1%></div>
-        <%-include('includes/team-info.ejs',{team: game.opposingAliance.team1})%>
-        </div>
-    </div>
-    <div class="game-team" id="against1">
-        <script>
-            decideTeamBackgroud('<%=opposingAlianceColor%>','against1')
-        </script>
-        <div class="team-info-container">
-            <div class="startPos">Auto Positon: <%=game.opposingAliance.startPos2%></div>
-        <%-include('includes/team-info.ejs',{team: game.opposingAliance.team2})%>
-        </div>
-    </div>
-    <div class="game-team" id="against2">
-        <script>
-            decideTeamBackgroud('<%=opposingAlianceColor%>','against2')
-        </script>
-        <div class="team-info-container">
-            <div class="startPos">Auto Positon: <%=game.opposingAliance.startPos3%></div>
-        <%-include('includes/team-info.ejs',{team: game.opposingAliance.team3})%>
-        </div>
-    </div>
+    
 </div>
 
 </div>

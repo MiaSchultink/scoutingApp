@@ -390,4 +390,14 @@ body {
     .game-team-number{
         margin: 5px;
     }
+    .red-aliance{
+        background-color: var(--aliance-red);
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .blue-aliance{
+        background-color: var(--aliance-blue);
+         border-radius: 10px;
+        margin-top: 10px;
+    }
 }

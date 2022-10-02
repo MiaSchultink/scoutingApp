@@ -13,49 +13,24 @@
                     </div>
                    <div class="game-teams-container">
                     <div class="game-teams-sub-container">
-                        <% const ourColor = games[i].ourAliance.color%>
-                        <% const withId = "with-container"+i; %>
-                        <%let containerClass = (ourColor == 'RED') ? 'red-container' : 'blue-container'%>
-                    <div class="with-container <%=containerClass%>" id='<%=withId%>'>
-                        <div class="game-team-number"><%=games[i].ourAliance.team1.number%></div>
-                        <div class="game-team-number"><%=games[i].ourAliance.team2.number%></div>
-                        <div class="game-team-number"><%=games[i].ourAliance.team3.number%></div>
+                       
+                    <div class="with-container red-container">
+                        <% for(let j=0; j<games[i].redAliance.length; j++){%>
+                            <div class="game-team-number"><%=games[i].redAliance[j].number%></div>
+                        <% } %> 
                      </div>
-                        <% const theirColor = games[i].opposingAliance.color%>
-                        <% const opId = "gainst-container"+i;%>
-                        <% containerClass=(theirColor=='RED') ? 'red-container' : 'blue-container'%>
-                        <div class="against-container <%=containerClass%>" id="<%=opId%>">
-                                <div class="game-team-number"><%=games[i].opposingAliance.team1.number%></div>
-                                <div class="game-team-number"><%=games[i].opposingAliance.team2.number%></div>
-                                <div class="game-team-number"><%=games[i].opposingAliance.team3.number%></div>
+                        <div class="against-container blue-container">
+                            <% for(let j=0; j<games[i].blueAliance.length; j++){%>
+                                <div class="game-team-number"><%=games[i].blueAliance[j].number%></div>
+                            <% } %> 
                         </div>
                     </div>
                 </div>
-                    <!-- <script>
-                        console.log('hello')
-                        const us = document.getElementById(withId);
-                        console.log('with',withId)
-                        console.log(us)
-                        const them  = document.getElementById(opId);
-                        const red = '#780000'
-                        const blue ='#020188'
-                        if('<%=ourColor%>'=='RED'){
-                            us.style.backgroundColor = red
-                            them.style.backgroundColor = blue
-                        }
-                        else{
-                            us.style.backgroundColor = blue
-                            them.style.backgroundColor = red
-                        }
-
-                    </script> -->
                         <div class="game-btns-section">
                                 <button class="small-btn" onclick="location.assign('/game/update/<%=games[i]._id%>')"><i class="fad fa-edit"></i></button>
                             <form action="/game/delete" method="post">
                                 <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
                                 <input type="hidden" name="gameId" value = '<%=games[i]._id%>'>
-                                <input type="hidden" name="ourAlianceId" value = '<%=games[i].ourAliance._id%>'>
-                                <input type="hidden" name="oppAlianceId" value = '<%=games[i].opposingAliance._id%>'>
                                 <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
                             </form>
                         </div>

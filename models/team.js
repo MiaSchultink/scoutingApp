@@ -56,12 +56,14 @@ const teamSchema = new Schema({
         default:0
     },
     movedInLastGame:{
-        type: Boolean,
-        default: true
+        type: String,
+        enum:['YES','NO'],
+        default: 'YES'
     },
     showedUpToLastGame:{
-        type:Boolean,
-        default: true
+        type: String,
+        enum:['YES','NO'],
+        default: 'YES'
     },
     numBallsShot:{
         type:Number,

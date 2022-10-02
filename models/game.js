@@ -8,40 +8,24 @@ const gameSchema = new Schema({
     type:{
         type:String,
         enum: ['PLAYOFF', 'QUALIFIER'],
-        // required: true
+        default: 'QUALIFIER'
     },
     name:{
         type:String,
         required: true,
     },
-    // ourAliance:[
-    //     {
-    //         type:mongoose.Schema.Types.ObjectId,
-    //         ref:'Team'
-    //     }
-    // ],
-    // ourColor:{
-    //     type:String,
-    //     enum:['RED','BLUE']
-    // },
-    // opposingAliance:[
-    //     {
-    //         type:mongoose.Schema.Types.ObjectId,
-    //         ref:'Team'
-    //     }
-    // ],
-    ourAliance:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Aliance'
-    },
-    opposingAliance:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Aliance'
-    },
-    // theirColor:{
-    //     type:String,
-    //     enum:['RED','BLUE']
-    // },
+    redAliance:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Team'
+        }
+    ],
+    blueAliance:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Team'
+        }
+    ]
 })
 
 module.exports = mongoose.model('Game', gameSchema)
