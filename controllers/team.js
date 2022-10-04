@@ -52,9 +52,9 @@ exports.addTeam = async(req, res, next) =>{
         const climbingConsistency = req.body.climbConsistency
         const shootingConsistency = req.body.shooterConsistency
         const defenseBot = req.body.defenseBot
-        const numBallAuto = req.body.numBallAuto
-        const ballsShot = req.body.ballsShot;
-        const ballsMissed = req.body.ballsMissed;
+        const numBallAuto = 0;
+        const ballsShot = 0;
+        const ballsMissed = 0;
         const teamWorkRating = req.body.teamWork;
         const autoConsitency = req.body.autoConsitency;
 
