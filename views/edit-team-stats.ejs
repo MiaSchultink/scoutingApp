@@ -4,14 +4,14 @@
     <%- include('includes/search.ejs', {path:'/team/search'}) %> 
         <div class="main">
     <div class="team-stats-container">
-        <form action="/game/stats/add/<%=gameName%>/<%=teamId%>" method="post" autocomplete="off">
+        <form action="/game/stats/edit" method="post" autocomplete="off">
             <div class="form-section">
                 <label for="ballsShot">Balls Shot</label>
-                <input type="number" name="ballsShot" class="num-input">
+                <input type="number" name="ballsShot" class="num-input" value="<%=gameStats.ballsShot%>">
             </div>
             <div class="form-section">
                 <label for="ballsMissed">Balls Missed</label>
-                <input type="number" name="ballsMissed" class="num-input">
+                <input type="number" name="ballsMissed" class="num-input" value="<%=gameStats.ballsMissed%>">
             </div>
             <div class="team-stat">
                 <label for="barReached">Bar Reached</label>
@@ -41,7 +41,9 @@
             <div class="form-section">
                 <input class="big-input" name="statComments">
             </div>
-            <button class="general-btn" type="submit">Add Stats</button>
+            <button class="general-btn" type="submit">Edit Stats</button>
+            <input type="hidden" name="gameName" value="<%=gameName%>">
+            <input type="hidden" name="teamId" value="<%=teamId%>">
             <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
 
         </form>

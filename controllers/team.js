@@ -58,16 +58,18 @@ exports.addTeam = async(req, res, next) =>{
         const teamWorkRating = req.body.teamWork;
         const autoConsitency = req.body.autoConsitency;
 
-        let movedInLastGame = 'YES';
-        const checkbox = document.getElementById('movedCheck');
-        if(checkbox.checked==true){
+        const gameStats= [];
+
+        let movedInLastGame= 'YES';
+        const notMoved = req.body.movedInLastGame ;
+        if(notMoved=='on'){
             movedInLastGame = 'NO';
         }
 
         let showedUpToLastGame = 'YES';
-        const check2 = document.getElementById('showCheck')
+        const notShowed= req.body.showedUpToLastGame;
         if
-        (check2.checked==true){
+        (notShowed=='on'){
             showedUpToLastGame='NO';
         }
 
@@ -101,7 +103,8 @@ exports.addTeam = async(req, res, next) =>{
             movedInLastGame: movedInLastGame,
             showedUpToLastGame: showedUpToLastGame,
             teamWorkRating: teamWorkRating,
-            autoConsistency: autoConsitency
+            autoConsistency: autoConsitency,
+            gameStats: gameStats
         })
 
         await team.save()
@@ -175,12 +178,12 @@ exports.deleteTeam = async(req, res, next) =>{
         const games = await Game.find().exec();
 
         for(let i=0; i<games.length; i++){
-            if(games[i].redAliance.includes(team)){
-                games[i].redAliance.pull(team)
+            if(games[i].redAliance.includes(team._id)){
+                games[i].redAliance.pull(team._id)
                 await games[i].save()
             }
-            else if(games[i].blueAliance.includes(team)){
-                games[i].blueAliance.pull(team)
+            else if(games[i].blueAliance.includes(team._id)){
+                games[i].blueAliance.pull(team._id)
                 await games[i].save()
             }
         }

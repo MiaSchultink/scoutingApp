@@ -1,0 +1,29 @@
+<%- include('includes/top.ejs') %> 
+<body>
+    <div class="top">
+    <%- include('includes/search.ejs', {path:'/team/search'}) %> 
+        <div class="main">
+            <div class="team-container">
+            <div class="team-info-container">
+                <%- include('includes/team-info.ejs',{team:team})%>
+            </div> 
+            <div class="team-stats-container">
+                <div class="stats-title">Performace in game <%=gameName%></div>
+                <% if(gameStats!=null) {%>
+                    <div class="game-stat">Balls Shot: <%=gameStats.ballsShot%></div>
+                    <div class="game-stat">Balls Missed: <%=gameStats.ballsMissed%></div>
+                    <div class="game-stat">Shooting: <%=gameStats.shootingConsistency%></div>
+                    <div class="game-stat">Bar Reached: <%=gameStats.barReached%></div>
+                    <div class="game-stat">Defense: <%=gameStats.defenseBot%></div>
+                    <div class="game-stat"><%=gameStats.comments%></div>
+                    <button class="general-btn" onclick="location.assign('/game/stats/edit/<%=gameName%>/<%=team._id%>')">Edit Stats</button>
+                <%} else{%>
+                <button class="general-btn" onclick="location.assign('/game/stats/add/<%=gameName%>/<%=team._id%>')">Add Stats</button>
+                <%}%>
+            </div>
+            </div>
+            </div>
+        </div>
+    <%- include('includes/nav.ejs') %> 
+    </div>
+</body>

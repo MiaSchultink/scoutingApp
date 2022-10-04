@@ -13,6 +13,7 @@ const gameSchema = new Schema({
     name:{
         type:String,
         required: true,
+        unique: true
     },
     redAliance:[
         {

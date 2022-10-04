@@ -16,12 +16,16 @@
                        
                     <div class="with-container red-container">
                         <% for(let j=0; j<games[i].redAliance.length; j++){%>
-                            <div class="game-team-number"><%=games[i].redAliance[j].number%></div>
+                            <div class="game-team-number">
+                                <button class="link-btn" onclick="location.assign('/game/stats/<%=games[i].name%>/<%=games[i].redAliance[j]._id%>')"><%=games[i].redAliance[j].number%></button>
+                            </div>
                         <% } %> 
                      </div>
                         <div class="against-container blue-container">
                             <% for(let j=0; j<games[i].blueAliance.length; j++){%>
-                                <div class="game-team-number"><%=games[i].blueAliance[j].number%></div>
+                                <div class="game-team-number">
+                                    <button class="link-btn" onclick="location.assign('/game/stats/<%=games[i].name%>/<%=games[i].blueAliance[j]._id%>')"><%=games[i].blueAliance[j].number%></button>
+                                </div>
                             <% } %> 
                         </div>
                     </div>
