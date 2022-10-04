@@ -138,10 +138,13 @@ exports.updateGame = async (req, res, next) => {
 exports.deleteGame = async (req, res, next) => {
     try {
         // confirm("Are you sure you want to delete this game?");
-        const game = await Game.findById(req.body.gameId).exec();
+        const game = await Game.findById(req.body.gameId).populate('blueAliance').populate('redAliance').exec();
         if (ourUpcomingGames.includes(game)) {
             ourUpcomingGames.pull(game);
         }
+        const gameStats = await GameStats.find({game:game.name}).exec();
+
+        await gameStats.remove();
         await game.remove()
 
         res.redirect('/game/all');
@@ -214,6 +217,7 @@ exports.addTeamStats = async (req, res, next) => {
         const gameName = req.params.gameName;
 
         const team = await Team.findById(teamId).populate('gameStats').exec();
+
         const teamGameStats = team.gameStats;
 
         const ballsShot = req.body.ballsShot;
@@ -222,6 +226,9 @@ exports.addTeamStats = async (req, res, next) => {
         const shootingConsistency = req.body.shootingConsistency;
         const defenseBot = req.body.defense;
         const comments = req.body.statComments;
+
+        const numBallsShotHistory = team.numBallsShotHistory;
+        const numBallsMissedHistory= team.numBallsMissedHistory;
 
         const gameStats = new GameStats({
             game: gameName,
@@ -232,6 +239,12 @@ exports.addTeamStats = async (req, res, next) => {
             defenseBot: defenseBot,
             comments: comments
         })
+
+        team.numBallsShotHistory.push(ballsShot);
+        team.numBallsMissedHistory.push(ballsMissed);
+
+        team.numBallsShot= numBallsShotHistory.reduce((a, b) => a + b, 0) / numBallsShotHistory.length;
+        team.numBallsMissed= numBallsMissedHistory.reduce((a, b) => a + b, 0) / numBallsMissedHistory.length;
 
         teamGameStats.addToSet(gameStats)
         await gameStats.save();

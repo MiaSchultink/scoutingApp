@@ -65,7 +65,8 @@ const teamSchema = new Schema({
         enum: ['YES', 'NO'],
         default: 'YES'
     },
-    numBallsShot: { //average
+    numBallsShot: { 
+        //average
         type: Number,
         default: 0
     },
@@ -73,6 +74,16 @@ const teamSchema = new Schema({
         type: Number,
         default: 0
     },
+    numBallsShotHistory:[
+        {
+            type:Number
+        }
+    ],
+    numBallsMissedHistory:[
+        {
+            type:Number
+        }
+    ],
     gameStats: [
         {
             type: mongoose.Schema.Types.ObjectId,
