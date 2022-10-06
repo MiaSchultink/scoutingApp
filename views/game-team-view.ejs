@@ -15,7 +15,8 @@
                     <div class="game-stat">Shooting: <%=gameStats.shootingConsistency%></div>
                     <div class="game-stat">Bar Reached: <%=gameStats.barReached%></div>
                     <div class="game-stat">Defense: <%=gameStats.defenseBot%></div>
-                    <div class="game-stat"><%=gameStats.comments%></div>
+                    <div class="game-stat">Sucessfull Climb: <%=gameStats.climbed%></div>
+                    <div class="game-stat">Comments: <%=gameStats.comments%></div>
                     <button class="general-btn" onclick="location.assign('/game/stats/edit/<%=gameName%>/<%=team._id%>')">Edit Stats</button>
                 <%} else{%>
                 <button class="general-btn" onclick="location.assign('/game/stats/add/<%=gameName%>/<%=team._id%>')">Add Stats</button>

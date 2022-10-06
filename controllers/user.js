@@ -233,3 +233,16 @@ exports.logout = (req, res, next) => {
     }
     
 };
+
+exports.getUserProfile = async(req, res, next) =>{
+    try{
+        const user = await User.findById(req.session.user._id).exec();
+        res.render('profile',{
+            user:user
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}

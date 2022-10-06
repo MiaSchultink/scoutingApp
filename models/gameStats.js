@@ -18,9 +18,7 @@ const gameStats = new Schema({
         default: 'MID'
     },
     shootingConsistency:{
-        type:String,
-        enum: ['BAD','OK','GOOD'],
-        default:'OK'
+        type:Number
     },
     defenseBot:{
         type:String,
@@ -29,6 +27,23 @@ const gameStats = new Schema({
     },
     comments:{
         type:String
+    },
+    autoBallsIn:{
+        type:Number
+    },
+    movedInGame: {
+        type: String,
+        enum: ['YES', 'NO'],
+        default: 'YES'
+    },
+    showedUpToGame: {
+        type: String,
+        enum: ['YES', 'NO'],
+        default: 'YES'
+    },
+    climbed:{
+        type:String,
+        enum:['YES','NO']
     }
 })
 

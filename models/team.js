@@ -28,19 +28,13 @@ const teamSchema = new Schema({
         default: 'MID'
     },
     climbingConsistency: {
-        type: String,
-        enum: ['BAD', 'OK', 'GOOD'],
-        default: 'OK'
+        type:Number
     },
     shootingConsistency: {
-        type: String,
-        enum: ['BAD', 'OK', 'GOOD'],
-        default: 'OK'
+        type:Number
     },
     autoConsistency: {
-        type: String,
-        enum: ['BAD', 'OK', 'GOOD'],
-        default: 'OK'
+        type:Number
     },
     defenseBot: {
         type: String,
@@ -55,15 +49,13 @@ const teamSchema = new Schema({
         type: String,
         default: 0
     },
-    movedInLastGame: {
-        type: String,
-        enum: ['YES', 'NO'],
-        default: 'YES'
+    showedUp:{
+        type:Number,
+        default:100
     },
-    showedUpToLastGame: {
-        type: String,
-        enum: ['YES', 'NO'],
-        default: 'YES'
+    moved:{
+        type:Number,
+        default:100
     },
     numBallsShot: { 
         //average
@@ -74,16 +66,6 @@ const teamSchema = new Schema({
         type: Number,
         default: 0
     },
-    numBallsShotHistory:[
-        {
-            type:Number
-        }
-    ],
-    numBallsMissedHistory:[
-        {
-            type:Number
-        }
-    ],
     gameStats: [
         {
             type: mongoose.Schema.Types.ObjectId,

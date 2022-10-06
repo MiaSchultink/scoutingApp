@@ -9,17 +9,9 @@
             <% for(let i=0; i<teams.length; i++){%>
             <div class="team-container">
                 <div class="team-title"><%=teams[i].name%> <%=teams[i].number%></div>
-                <div class="team-btns-section">
-                
+            <div class="team-btns-section">
                 <button class="small-btn" onclick="location.assign('/team/view/<%=teams[i]._id%>')"><i class="fad fa-info"></i></button>
-                <button class="small-btn" onclick="location.assign('/team/update/<%=teams[i]._id%>')"><i class="fad fa-edit"></i></button>
-                <form action="/team/delete" method="post">
-                    <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
-                    <input type="hidden" name="teamId" value = '<%=teams[i]._id%>'>
-                    <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
-                </form>
-            
-                </div>
+            </div>
             </div>
              <% } %> 
         </div>

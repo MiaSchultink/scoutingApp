@@ -22,13 +22,17 @@
                     <option value="TRAVERSAL">TRAVERSAL</option>
                 </select>
             </div>
-            <div class="form-section">
+            <!-- <div class="form-section">
                 <label for="shootingConsistency">Shooting consistency</label>
                 <select name="shotingConsistency" id="shootingConsistency">
                     <option value="GOOD">GOOD</option>
                     <option value="OK">OK</option>
                     <option value="BAD">BAD</option>
-                </select>
+                </select> -->
+                <div class="team-stat">
+                    <label for="numBallAuto">Balls in out of <%=team.numBallAuto%></label>
+                    <input type="number" class="num-input" name="ballsIn">
+                </div>
             <div class="form-section">
                 <label for="defense">Defense</label>
                 <select name="defense" id="defense">
@@ -39,8 +43,22 @@
                 </select>
             </div>
             <div class="form-section">
+                <label for="climbed">Sucessfull Climb</label>
+                <input type="checkbox" name="climbed">
+            </div>
+            <div class="form-section">
+                <input class="check" type="checkbox" name="movedInGame" id="movedCheck">
+                <label for="movedInGame">Didn't move in last game</label>
+            </div>
+            <div class="form-section">
+                <input class="check" type="checkbox" name="showedUoToGame" id="showedCheck">
+                <label for="showedUoToGame">Didn't show up to last game</label>
+            </div>
+            <div class="form-section">
+                <label for="statComments">Comments</label>
                 <input class="big-input" name="statComments">
             </div>
+           
             <button class="general-btn" type="submit">Edit Stats</button>
             <input type="hidden" name="gameName" value="<%=gameName%>">
             <input type="hidden" name="teamId" value="<%=teamId%>">

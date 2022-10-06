@@ -49,31 +49,23 @@ exports.addTeam = async(req, res, next) =>{
         const robotType = req.body.robotType
         const barReached = req.body.barReached
         const shooterType = req.body.shooterType
-        const climbingConsistency = req.body.climbConsistency
-        const shootingConsistency = req.body.shooterConsistency
+        // const climbingConsistency = req.body.climbingConsistency
+        // const shootingConsistency = req.body.shootingConsistency
+        const climbingConsistency = 0;
+        const shootingConsistency = 0;
         const defenseBot = req.body.defenseBot
         const numBallAuto = 0;
         const ballsShot = 0;
         const ballsMissed = 0;
-        const numBallsShotHistory = [];
-        const numBallsMissedHistory = [];
         const teamWorkRating = req.body.teamWork;
-        const autoConsitency = req.body.autoConsitency;
+        const moved = 100;
+        const showedUp =100;
+        const numMoved = 0;
+        const numShowedUp=0;
+        const numSuccessfullClimbs = 0;
+        //const autoConsitency = req.body.autoConsistency;
 
         const gameStats= [];
-
-        let movedInLastGame= 'YES';
-        const notMoved = req.body.movedInLastGame ;
-        if(notMoved=='on'){
-            movedInLastGame = 'NO';
-        }
-
-        let showedUpToLastGame = 'YES';
-        const notShowed= req.body.showedUpToLastGame;
-        if
-        (notShowed=='on'){
-            showedUpToLastGame='NO';
-        }
 
         const otherComments = req.body.otherComments
 
@@ -102,13 +94,15 @@ exports.addTeam = async(req, res, next) =>{
             blueAlianceURL: url,
             ballsShot: ballsShot,
             ballsMissed: ballsMissed,
-            movedInLastGame: movedInLastGame,
-            showedUpToLastGame: showedUpToLastGame,
+            moved: moved,
+            showedUp: showedUp,
             teamWorkRating: teamWorkRating,
-            autoConsistency: autoConsitency,
+            autoConsistency: autoConsitency, //no value
             gameStats: gameStats,
-            numBallsShotHistory: numBallsShotHistory,
-            numBallsMiisedHistory: numBallsMissedHistory
+            numMoved:numMoved,
+            numShowedUp:numShowedUp,
+            numSuccessfullClimbs:numSuccessfullClimbs,
+            blueAlianceURL:url
         })
 
         await team.save();
@@ -144,8 +138,8 @@ exports.updateTeam = async(req, res, next) =>{
         const robotType = req.body.robotType
         const barReached = req.body.barReached
         const shooterType = req.body.shooterType
-        const climbingConsistency = req.body.climbConsistency
-        const shootingConsistency = req.body.shooterConsistency
+        // const climbingConsistency = req.body.climbConsistency
+        // const shootingConsistency = req.body.shooterConsistency
         const defenseBot = req.body.defenseBot
         //const numBallAuto = req.body.numBallAuto
         const otherComments = req.body.otherComments
@@ -157,8 +151,8 @@ exports.updateTeam = async(req, res, next) =>{
         team.robotType = robotType;
         team.barReached = barReached;
         team.shooterType = shooterType;
-        team.climbingConsistency = climbingConsistency;
-        team.shootingConsistency = shootingConsistency;
+        // team.climbingConsistency = climbingConsistency;
+        // team.shootingConsistency = shootingConsistency;
         team.defenseBot = defenseBot;
         //team.numBallAuto = numBallAuto;
         team.otherComments = otherComments;

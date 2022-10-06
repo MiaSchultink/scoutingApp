@@ -6,6 +6,15 @@
             <div class="team-container">
             <div class="team-info-container">
                 <%- include('includes/team-info.ejs',{team:team[0]})%>
+                <div class="team-btns">
+                    <button class="small-btn" onclick="location.assign('/team/update/<%=team[0]._id%>')"><i class="fad fa-edit"></i></button>
+                    <form action="/team/delete" method="post">
+                        <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
+                        <input type="hidden" name="teamId" value = '<%=team[0]._id%>'>
+                        <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+                    </form>
+
+                </div>
             </div>
             </div>
         </div>

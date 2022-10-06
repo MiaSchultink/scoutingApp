@@ -18,10 +18,13 @@ const userSchema = new Schema({
     },
     resetToken: String,
     resetTokenExpiration: Date,
-
+    job:{
+        type:String
+    },
     role: {
         type: String,
         required: true,
+        enum:['admin','user','editor'],
         default: 'user'
     },
 });

@@ -13,4 +13,6 @@ router.post('/reset', userController.postReset)
 
 router.post('/logout', userController.logout)
 
+router.get('/profile', userController.getUserProfile)
+
 module.exports=  router;
