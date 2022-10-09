@@ -21,9 +21,18 @@ exports.getAllTeams = async(req, res, next) =>{
 exports.getTeam = async(req, res, next)=>{
     try{
         const team = await Team.find({_id:req.params.teamId}).exec()
-        console.log(team)
+
+        const teamGames = [];
+        const allGames = await Game.find();
+
+        for(let i=0; i<allGames.length; i++){
+            if(allGames[i].blueAliance.includes(team._id).toString()||allGames[i].redAliance.includes(team._id).toString()){
+                teamGames.push(allGames[i])
+            }
+        }
         res.render('team',{
-            team:team
+            team:team,
+            teamGames: teamGames
         })
     }
     catch (err) {
@@ -117,7 +126,7 @@ exports.addTeam = async(req, res, next) =>{
 
 exports.getUpdateTeam = async(req, res, next) =>{
     try{
-        const team = await Team.find({_id:req.params.teamId}).exec();
+        const team = await Team.findOne({_id:req.params.teamId}).populate('redAliance').populate('blueAliance').exec();
 
         res.render('update-team',{
             team:team

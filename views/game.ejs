@@ -27,9 +27,9 @@
     </div>
 
     <div class="game-btns-section">
-        <button class="small-btn" onclick="location.assign('/game/update/<%=game._id%>')"><i class="fad fa-edit"></i></button>
+        <button class="general-btn" onclick="location.assign('/game/update/<%=game._id%>')">Edit Game</button>
     <form action="/game/delete" method="post">
-        <button class="small-btn" type="submit"><i class="fad fa-trash"></i></button>
+        <button class="general-btn" type="submit">Delete Game</button>
         <input type="hidden" name="gameId" value = '<%=game._id%>'>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
     </form>

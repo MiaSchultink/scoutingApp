@@ -138,46 +138,6 @@ exports.postReset = async (req, res, next) => {
     }
 }
 
-exports.getReset = (req, res, next) => {
-    try {
-        res.render('reset')
-    }
-    catch (err) {
-        console.log(err)
-        res.render('error')
-    }
-}
-
-exports.postReset = async (req, res, next) => {
-    try {
-        const token = crypto.randomBytes(32).toString('hex');
-        const user = await User.findOne({ email: req.body.email }).exec()
-        if (!user) { throw new Error('No accounts with this email') }
-        else {
-            user.resetToken = token;
-            user.resetTokenExpiration = Date.now() + 3600000
-            await user.save()
-            const host = (process.env.NODE_ENV == 'development') ?
-                'http://localhost:3000' :
-                'http://www.miaschultink.com'
-            const message = {
-                to: req.body.email,
-                from: 'contact@miaschultink.com',
-                subject: 'Password Reset',
-                html: `
-        <p>You requested a password reset.</p>
-        <p>Click this <a href ="${host}/users/reset/${token}">link</a></p>`
-            }
-            await sgMail.send(message)
-            res.redirect('/');
-        }
-    }
-    catch (err) {
-        console.log(err)
-        res.render('error')
-    }
-}
-
 exports.getNewPassword = async (req, res, next) => {
     try {
         const token = req.params.token;
@@ -240,6 +200,37 @@ exports.getUserProfile = async(req, res, next) =>{
         res.render('profile',{
             user:user
         })
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
+exports.getEditProfile = async(req, res, next) =>{
+    try{
+        const user = await User.findById(req.session.user._id).exec();
+        res.render('edit-profile',{
+            user:user
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}
+
+exports.editProfile = async(req, res, next) =>{
+    try{
+        const user = await User.findById(req.session.user._id).exec();
+        const name = req.body.name;
+        const email = req.body.eamil;
+
+        user.name = name;
+        user.email = email;
+
+        await user.save();
+        res.redirect('/')
     }
     catch (err) {
         console.log(err)

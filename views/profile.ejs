@@ -6,14 +6,10 @@
            <div class="profile-container">
                 <div class="profile-sec">Name: <%=user.name%></div>
                 <div class="profile-sec">Email: <%=user.email%></div>
-                <div class="profile-sec">Job: <%=user.job%></div>
                 <div class="profile-sec">Access: <%=user.role%></div>
 
             <div class="profile-btns">
-            <form action="/user/profile" method="post">
-                <button class="general-btn" type="submit">Edit Profile</button>
-                <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
-            </form>
+            <button class="general-btn" onclick="location.assign('/user/profile/edit')">Edit Profile</button>
             <form action="/user/logout" method="post">
                 <button class="general-btn" type="submit">Logout</button>
                 <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>

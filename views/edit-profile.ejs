@@ -1,0 +1,21 @@
+<%- include('includes/top.ejs') %> 
+<body>
+    <div class="top">
+    <%- include('includes/search.ejs', {path:'/team/search'}) %> 
+        <div class="main">
+            <form action="/user/profile/edit" method="post">
+                <div class="form-section">
+                    <label for="name">Name</label>
+                    <input name="name" class="input-txt" value="<%=user.name%>">
+                </div>
+                <div class="form-section">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="input-txt" value="<%=user.email%>">
+                </div>
+                <button class="general-btn" type="submit">Edit Profile</button>
+                <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
+            </form>
+        </div>
+    <%- include('includes/nav.ejs') %> 
+    </div>
+</body>

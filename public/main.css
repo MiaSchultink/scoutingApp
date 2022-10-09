@@ -232,16 +232,26 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 20px;
     }
     .game-btns-section{
-        grid-area: game-btns;
-        display: block;
+        /* grid-area: game-btns; */
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
         padding:10px;
     }
     .team-btns-section{
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
+    }
+    .team-btns{
+        display: flex;
+        justify-content: space-evenly;
+        align-content: center;
         width: 100%;
     }
     .small-btn{
@@ -420,5 +430,24 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .team-games-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom:20px;
+    }
+    .team-game{
+        margin: 5px;
+    }
+    .team-games-title{
+        font-size: 19px;
+        font-weight: bold;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
     }
 }

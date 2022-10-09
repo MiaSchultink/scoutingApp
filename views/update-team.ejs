@@ -23,7 +23,7 @@
     <div class="form-section">
         <label for="barReached">Bar Reached</label>
         <select class='select' name="barReached" id="barReached">
-            <option value="LOw">LOW</option>
+            <option value="LOW">LOW</option>
             <option value="MID">MID</option>
             <option value="HIGH">HIGH</option>
             <option value="TRAVERSAL">TRAVERSAL</option>
@@ -32,7 +32,7 @@
     <div class="form-section">
         <label for="shooterType">Shooter Type</label>
         <select calss="select" name="shooterType" id="shooterType">
-            <option value="LOw">LOW</option>
+            <option value="LOW">LOW</option>
             <option value="HIGH">HIGH</option>
         </select><br>
         </div>
@@ -88,9 +88,11 @@
         <label for="otherComments">Other Comments</label><br>
         <input class="big-input" type="text" name="otherComments"><br>
     </div>
+    <form action="/team/update">
         <button class="general-btn" type="submit">Update Team</button>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
-      </form>
+        <input type ="hidden" name ="teamId" value= '<%=team._id%>'>
+    </form>
     </div>
 </div>
 <%- include('includes/nav.ejs') %> 
