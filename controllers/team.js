@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const Game = require('../models/game')
 const Team = require('../models/team');
+const GameStats = require('../models/gameStats');
 
 const YEAR = 2022;
 
@@ -20,7 +21,7 @@ exports.getAllTeams = async(req, res, next) =>{
 
 exports.getTeam = async(req, res, next)=>{
     try{
-        const team = await Team.find({_id:req.params.teamId}).exec()
+        const team = await Team.findOne({_id:req.params.teamId}).populate('gameStats').exec()
 
         const teamGames = [];
         const allGames = await Game.find();
@@ -30,10 +31,19 @@ exports.getTeam = async(req, res, next)=>{
                 teamGames.push(allGames[i])
             }
         }
+
+        const gamesWithStats = [];
+        for(let i=0; i<team.gameStats.length; i++){
+            const gameWithStats = await Game.findOne({name:team.gameStats[i].game}).exec();
+            gamesWithStats.push(gameWithStats)
+        }
+
+        console.log(gamesWithStats)
         res.render('team',{
             team:team,
-            teamGames: teamGames
+            teamGames: gamesWithStats
         })
+
     }
     catch (err) {
         console.log(err)
@@ -58,21 +68,24 @@ exports.addTeam = async(req, res, next) =>{
         const robotType = req.body.robotType
         const barReached = req.body.barReached
         const shooterType = req.body.shooterType
-        // const climbingConsistency = req.body.climbingConsistency
-        // const shootingConsistency = req.body.shootingConsistency
+       
         const climbingConsistency = 0;
         const shootingConsistency = 0;
+        //const autoConsitency = 0;
+
         const defenseBot = req.body.defenseBot
-        const numBallAuto = 0;
+        const teamWorkRating = req.body.teamWork;
+
+        const numBallAuto = req.body.numBallAuto;
+        const avrgBallsInAuto = 0;
         const ballsShot = 0;
         const ballsMissed = 0;
-        const teamWorkRating = req.body.teamWork;
+
         const moved = 100;
         const showedUp =100;
         const numMoved = 0;
         const numShowedUp=0;
         const numSuccessfullClimbs = 0;
-        //const autoConsitency = req.body.autoConsistency;
 
         const gameStats= [];
 
@@ -106,7 +119,8 @@ exports.addTeam = async(req, res, next) =>{
             moved: moved,
             showedUp: showedUp,
             teamWorkRating: teamWorkRating,
-            autoConsistency: autoConsitency, //no value
+            //autoConsistency: autoConsitency, 
+            avrgBallsInAuto: avrgBallsInAuto,
             gameStats: gameStats,
             numMoved:numMoved,
             numShowedUp:numShowedUp,
@@ -150,7 +164,7 @@ exports.updateTeam = async(req, res, next) =>{
         // const climbingConsistency = req.body.climbConsistency
         // const shootingConsistency = req.body.shooterConsistency
         const defenseBot = req.body.defenseBot
-        //const numBallAuto = req.body.numBallAuto
+        const numBallAuto = req.body.numBallAuto
         const otherComments = req.body.otherComments
 
         const url =  "https://www.thebluealliance.com/team/"+number+"/"+YEAR
@@ -163,7 +177,7 @@ exports.updateTeam = async(req, res, next) =>{
         // team.climbingConsistency = climbingConsistency;
         // team.shootingConsistency = shootingConsistency;
         team.defenseBot = defenseBot;
-        //team.numBallAuto = numBallAuto;
+        team.numBallAuto = numBallAuto;
         team.otherComments = otherComments;
         team.blueAlianceURL = url;
 
@@ -221,13 +235,20 @@ exports.searchTeams = async(req, res, next) =>{
 
 exports.viewPerformanceInGame = async(req, res, next) =>{
     try{
-        const team = await Team.findOne(req.params.teamId).populate('gameStats').exec();
-        const gameStats = team.gameStats;
+        const team = await Team.findById(req.params.teamId).populate('gameStats').exec();
+       
         const gameName = req.params.gameName;
+
+        let statsForGame = null;
+        for(let i=0; i<team.gameStats.length; i++){
+            if(team.gameStats[i].game==gameName){
+                statsForGame = team.gameStats[i];
+            }
+        }
 
         res.render('view-team-stats',{
             team:team,
-            gameStats: gameStats,
+            gameStats: statsForGame,
             gameName:gameName
         })
     }

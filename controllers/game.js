@@ -235,6 +235,8 @@ exports.addTeamStats = async (req, res, next) => {
         const climbedResult = req.body.climbed;
         const climbed = climbedResult=='on'? "YES":"NO";
 
+        const autoBallsIn = req.body.autoBallsIn;
+
         let movedInGame= 'YES';
         const notMoved = req.body.movedInGame ;
         if(notMoved=='on'){
@@ -257,6 +259,7 @@ exports.addTeamStats = async (req, res, next) => {
             defenseBot: defenseBot,
             comments: comments,
             climbed:climbed,
+            autoBallsIn: autoBallsIn,
             movedInGame: movedInGame,
             showedUpToGame: showedUpToGame
         }) 
@@ -281,27 +284,35 @@ exports.addTeamStats = async (req, res, next) => {
         const teamShootingConsistency = 100*(ballsIn/ballsShot);
 
         let numSuccessfullClimbs = 0;
-        for(let i=0; i<gameStats.length; i++){
-            if(gameStats[i].climbed=='YES'){
+        for(let i=0; i<teamGameStats.length; i++){
+            if(teamGameStats[i].climbed=='YES'){
             numSuccessfullClimbs++;
             }
         }
-        const climbConsistency = 100*(numSuccessfullClimbs/team.gameStats.length);
+        const climbConsistency = 100*(numSuccessfullClimbs/teamGameStats.length);
 
         team.numBallsShot = ballsShot;
         team.numBallsMissed = ballsMissed;
         team.climbingConsistency = climbConsistency
         team.shootingConsistency = teamShootingConsistency;
 
+        let sumBallAuto = 0;
+        for(let i=0; i<teamGameStats.length; i++){
+            sumBallAuto+=teamGameStats[i].autoBallsIn;
+        }
+    
+        const avrgBallsInAuto = sumBallAuto/teamGameStats.length;
+        team.avrgBallsInAuto = avrgBallsInAuto;
+
         let numShowedUp = 0;
-        for(let i=0; i<gameStats.length; i++){
-            if(gameStats[i].showedUpToGame=='YES'){
+        for(let i=0; i<teamGameStats.length; i++){
+            if(teamGameStats[i].showedUpToGame=='YES'){
                 numShowedUp++;
             }
         }
         let numMoved = 0;
-        for(let i=0; i<gameStats.length; i++){
-            if(gameStats[i].movedInGame=='YES'){
+        for(let i=0; i<teamGameStats.length; i++){
+            if(teamGameStats[i].movedInGame=='YES'){
                 numMoved++;
             }
         }
@@ -396,6 +407,7 @@ exports.editTeamStats = async(req, res,next) =>{
         const defenseBot = req.body.defenseBotl;
         const barReached = req.body.barReached;
         const comments = req.body.barReached;
+        const autoBallsIn = req.body.autoBallsIn;
 
 
         let climbed = "";
@@ -429,6 +441,7 @@ exports.editTeamStats = async(req, res,next) =>{
         gameStats.climbed=climbed;
         gameStats.movedInGame = movedInGame,
         gameStats.showedUpToGame= showedUpToGame;
+        gameStats.autoBallsIn = autoBallsIn
 
         let sumBallsShot = 0;
         for(let i=0; i<teamGameStats.length; i++){
@@ -459,15 +472,22 @@ exports.editTeamStats = async(req, res,next) =>{
         team.climbingConsistency = climbConsistency
         team.shootingConsistency = teamShootingConsistency;
 
+        let sumBallAuto =0;
+        for(let i=0; i<teamGameStats.length; i++){
+            sumBallAuto+=teamGameStats[i].autoBallsIn;
+        }
+        const avrgBallsInAuto = sumBallAuto/teamGameStats.length;
+        team.avrgBallsInAuto = avrgBallsInAuto
+
         let numShowedUp = 0;
-        for(let i=0; i<gameStats.length; i++){
-            if(gameStats[i].showedUpToGame=='YES'){
+        for(let i=0; i<teamGameStats.length; i++){
+            if(teamGameStats[i].showedUpToGame=='YES'){
                 numShowedUp++;
             }
         }
         let numMoved = 0;
-        for(let i=0; i<gameStats.length; i++){
-            if(gameStats[i].movedInGame=='YES'){
+        for(let i=0; i<teamGameStats.length; i++){
+            if(teamGameStats[i].movedInGame=='YES'){
                 numMoved++;
             }
         }

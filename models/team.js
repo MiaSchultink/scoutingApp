@@ -19,12 +19,12 @@ const teamSchema = new Schema({
     },
     shooterType: {
         type: String,
-        enum: ['LOW', 'HIGH'],
+        enum: ['LOW', 'HIGH','NONE'],
         default: "LOW"
     },
     barReached: {
         type: String,
-        enum: ['LOW', 'MID', 'HIGH', 'TRAVERSAL'],
+        enum: ['LOW', 'MID', 'HIGH', 'TRAVERSAL','NONE'],
         default: 'MID'
     },
     climbingConsistency: {
@@ -44,6 +44,9 @@ const teamSchema = new Schema({
     numBallAuto: {
         type: Number,
         default: 0
+    },
+    avrgBallsInAuto:{
+        type:Number
     },
     blueAlianceURL: {
         type: String,

@@ -7,7 +7,7 @@
       <form action = "/team/new" method="post" autocomplete="off">
         <div class="form-section">
             <label for="teamNumber">Number</label>
-            <input class="num-input" name ="teamNumber" required><br>
+            <input type="number" class="num-input" name ="teamNumber" required><br>
         </div>
     <div class="form-section">
         <label for="teamName">Name</label>
@@ -27,6 +27,7 @@
             <option value="MID">MID</option>
             <option value="HIGH">HIGH</option>
             <option value="TRAVERSAL">TRAVERSAL</option>
+            <option value="NONE">NONE</option>
         </select><br>
     </div>
     <div class="form-section">
@@ -34,6 +35,7 @@
         <select calss="select" name="shooterType" id="shooterType">
             <option value="LOW" selected>LOW</option>
             <option value="HIGH">HIGH</option>
+            <option value="NONE">NONE</option>
         </select><br>
         </div>
     <div class="form-section">
@@ -44,6 +46,10 @@
             <option value="OK">MID</option>
             <option value="GOOD">GOOD</option>
         </select><br>
+    </div>
+    <div class="form-section">
+        <label for="numBallAuto">Balls in Auto</label>
+        <input class="num-input" type="number" name="numBallAuto"><br>
     </div>
     <div class="form-section">
         <label for="teamWork">Team Work Rating</label>

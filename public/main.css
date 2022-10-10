@@ -450,4 +450,26 @@ body {
         align-items: center;
         margin-top: 20px;
     }
+
+    .team-stats-section{
+        margin-top: 10px;
+    }
+
+    .team-category{
+        margin-right: 10px;
+    }
+    .details-btn{
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        height: 30px;
+        font-size: 13px;
+        border-radius: 10px;
+        width: 70px;
+        color: white;
+        background-color: var(--secondary-background);
+    }
 }
