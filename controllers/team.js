@@ -140,7 +140,7 @@ exports.addTeam = async(req, res, next) =>{
 
 exports.getUpdateTeam = async(req, res, next) =>{
     try{
-        const team = await Team.findOne({_id:req.params.teamId}).populate('redAliance').populate('blueAliance').exec();
+        const team = await Team.findOne({_id:req.params.teamId}).exec();
 
         res.render('update-team',{
             team:team

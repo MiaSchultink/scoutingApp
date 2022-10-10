@@ -38,7 +38,10 @@ exports.getGame = async (req, res, next) => {
 
 exports.getAddGame = async (req, res, next) => {
     try {
-        const teams = await Team.find().exec();
+        let teams = await Team.find().exec();
+        if(teams.length==0){
+            teams = []
+        }
         res.render('add-game', {
             teams: teams
         })

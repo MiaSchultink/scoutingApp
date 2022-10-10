@@ -22,6 +22,7 @@
         <input class='time-input' type="time" name="gameTime">
     </div>
     <div class="form-section">
+        <%if (teams.length>0){ %>
         <label for="redAliance">Red Aliance</label>
         <div class="aliance-container" name="redAliance">
             <select class='select' name="redTeam1" id="redTeam1">
@@ -42,9 +43,11 @@
                         <option value="<%=teams[i]._id%>"><%=teams[i].name%>  <%=teams[i].number%></option>
                 <% } %>
             </select>
+            <% } %> 
         </div>
     </div>
     <div class="form-section">
+        <%if (teams.length>0){ %>
         <label for="blueAliance">BlueAliance</label>
         <div class="aliance-container" name="blueAliance">
             <select class='select' name="blueTeam1" id="blueTeam1">
@@ -66,6 +69,7 @@
                 <% } %>
             </select>
         </div>
+        <% } %> 
     </div>
         <button class="general-btn" type="submit">Add Game</button>
         <input type ="hidden" name ="_csrf" value= '<%=csrfToken%>'>
