@@ -218,3 +218,21 @@ exports.searchTeams = async(req, res, next) =>{
         res.render('error')
     }
 }
+
+exports.viewPerformanceInGame = async(req, res, next) =>{
+    try{
+        const team = await Team.findOne(req.params.teamId).populate('gameStats').exec();
+        const gameStats = team.gameStats;
+        const gameName = req.params.gameName;
+
+        res.render('view-team-stats',{
+            team:team,
+            gameStats: gameStats,
+            gameName:gameName
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.render('error')
+    }
+}

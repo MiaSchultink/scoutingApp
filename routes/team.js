@@ -19,4 +19,6 @@ router.post('/update', isAuth,teamController.updateTeam)
 
 router.post('/search', isAuth, teamController.searchTeams)
 
+router.get('/performance/:gamName/:teamId', isAuth, teamController.viewPerformanceInGame)
+
 module.exports=  router;

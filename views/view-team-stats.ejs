@@ -1,0 +1,18 @@
+<%- include('includes/top.ejs') %> 
+<body>
+    <div class="top">
+    <%- include('includes/search.ejs', {path:'/team/search'}) %> 
+        <div class="main">
+        <div class="team-container">
+            <div class="game-stat">Balls Shot: <%=gameStats.ballsShot%></div>
+            <div class="game-stat">Balls Missed: <%=gameStats.ballsMissed%></div>
+            <div class="game-stat">Shooting: <%=gameStats.shootingConsistency%></div>
+            <div class="game-stat">Bar Reached: <%=gameStats.barReached%></div>
+            <div class="game-stat">Defense: <%=gameStats.defenseBot%></div>
+            <div class="game-stat">Sucessfull Climb: <%=gameStats.climbed%></div>
+            <div class="game-stat">Comments: <%=gameStats.comments%></div>
+        </div>
+        </div>
+    <%- include('includes/nav.ejs') %> 
+    </div>
+</body>

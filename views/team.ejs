@@ -5,16 +5,17 @@
         <div class="main">
             <div class="team-container">
             <div class="team-info-container">
-                <%- include('includes/team-info.ejs',{team:team[0]})%>
+                <%- include('includes/team-info.ejs',{team:team})%>
             </div>
             <div class="team-games-title">Games</div>
             <div class="team-games-container">
                 <% for(let i=0; i<teamGames.length; i++){%>
                     <div class="team-game"><%=teamGames[i].name%></div>
+                    <button class="link-btn" onclick="location.assign('/team/performace/<%=gameName%>/<%=team._id%>')"><%=teamGames[i].name%></button>
                 <% } %>     
             </div>
             <div class="team-btns">
-                <button class="general-btn" onclick="location.assign('/team/update/<%=team[0]._id%>')">Edit Team</button>
+                <button class="general-btn" onclick="location.assign('/team/update/<%=team._id%>')">Edit Team</button>
                 <form action="/team/delete" method="post">
                     <button class="general-btn" type="submit">Delete Team</button>
                     <input type="hidden" name="teamId" value = '<%=team[0]._id%>'>
