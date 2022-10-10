@@ -26,7 +26,6 @@ mongoose.connect(process.env.MONGO_URL, {
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
-//const favicon = require('serve-favicon');
 
 const userController = require('./controllers/user')
 const errorController = require('./controllers/error')
@@ -36,7 +35,6 @@ const User = require('./models/user');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
